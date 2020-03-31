@@ -1,13 +1,16 @@
 #include "meniu.h"
-
+#include "produs.cpp"
+#include "mancare.cpp"
+#include "bauturi.cpp"
+#include "desert.cpp"
 using namespace std;
 
-// Meniu::Meniu(Ciorbe ciorbe, FeluriPrincipale feluriPrincipale, Deserturi deserturi, Bauturi bauturi){
-//     this->ciorbe = ciorbe;
-//     this->feluriPrincipale = feluriPrincipale;
-//     this->deserturi = deserturi;
-//     this->bauturi = bauturi;
-// }
+Meniu::Meniu(Ciorbe ciorbe, FeluriPrincipale feluriPrincipale, Deserturi deserturi, Bauturi bauturi){
+    this->ciorbe = ciorbe;
+    this->feluriPrincipale = feluriPrincipale;
+    this->deserturi = deserturi;
+    this->bauturi = bauturi;
+}
 
 Meniu::Meniu(const Meniu& m){
     this->ciorbe = m.ciorbe;

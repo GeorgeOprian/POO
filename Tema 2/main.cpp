@@ -3,18 +3,20 @@
 // #include "mancare.cpp"
 // #include "bauturi.cpp"
 // #include "desert.cpp"
-#include "meniu.cpp"
+ #include "meniu.cpp"
 
-//#include "meniu.h"
-//#include "desert.h"
-//#include "bauturi.h"
-//#include "mancare.h"
-//#include "produs.h"
+// #include "meniu.h"
+// #include "desert.h"
+// #include "bauturi.h"
+// #include "mancare.h"
+// #include "produs.h"
 using namespace std;
 
 ///const in cc pt vectori
 
 //fa verificare cu this!=&x in supreaincarcarea pe=
+
+
 int main()
 {
     Meniu s;

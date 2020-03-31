@@ -13,13 +13,14 @@ class Produs
     string unitateMasura;
         
     public:
+        //Produs(){};
         Produs(string, int, int, string);
         Produs(const Produs&);
         virtual ~Produs(){};
 
         virtual Produs& operator=(const Produs&);
         friend istream& operator>>(istream&, Produs&);
-        friend ostream& operator>>(ostream&, Produs&);
+        friend ostream& operator<<(ostream&, Produs&);
 
         virtual void citireNume(istream&);
         virtual void citirePret(istream&);

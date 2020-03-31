@@ -9,6 +9,7 @@ class Supa: public Produs
     protected:
         
     public:
+        //Supa(){};
         Supa(string, int, int, string);
         Supa(const Supa&);
         ~Supa(){};
@@ -39,6 +40,7 @@ class Ciorbe
         vector<Supa> supe;
         int nrSupe;
     public:
+        Ciorbe(){};
         Ciorbe(vector<Ciorba>, int, vector<Supa>, int);
         Ciorbe(const Ciorbe&);
         ~Ciorbe(){};

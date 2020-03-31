@@ -1,11 +1,11 @@
 #ifndef MENIU_H
 #define MENIU_H
-#include "mancare.cpp"
-#include "desert.cpp"
-#include "bauturi.cpp"
-// #include "mancare.h"
-// #include "desert.h"
-// #include "bauturi.h"
+// #include "mancare.cpp"
+// #include "desert.cpp"
+// #include "bauturi.cpp"
+#include "mancare.h"
+#include "desert.h"
+#include "bauturi.h"
 
 class Meniu
 {

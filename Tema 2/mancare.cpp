@@ -1,6 +1,6 @@
 //#include <bits/stdc++.h>
 #include "mancare.h"
-#include  "produs.h"
+//#include  "produs.h"
 using namespace std;
 
 //iplementare clasa Supa
@@ -51,7 +51,7 @@ void Ciorba::afisare(ostream& out){
     out <<endl;
 }
 //implementare clasa ciorbe
-Ciorbe::Ciorbe(vector<Ciorba> c = {}, int nrCiorbe = 0, vector <Supa> s = {}, int nrSupe = 0){
+Ciorbe::Ciorbe(vector<Ciorba> c, int nrCiorbe, vector <Supa> s, int nrSupe){
     this->ciorbe = c;
     this->supe = s;
     this->nrCiorbe = nrCiorbe;
