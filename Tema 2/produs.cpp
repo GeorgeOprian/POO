@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Produs::Produs(string numeProdus = "", int pret = 0, int cantitate = 0, string unitateMasura = "")
+Produs::Produs(string numeProdus, int pret, int cantitate, string unitateMasura)
 {
     this->numeProdus = numeProdus;
     this->pret = pret;
@@ -26,7 +26,7 @@ Produs& Produs::operator=(const Produs& p){
     }
     return *this;
 }
-void Produs::citireNume(istream& in){
+void Produs::citireNume(ifstream& in){
     try {
         cout <<"Nume: ";
         getline(in, numeProdus);
@@ -43,7 +43,7 @@ void Produs::citireNume(istream& in){
         exit(EXIT_FAILURE);
     }
 }
-void Produs::citirePret(istream& in){
+void Produs::citirePret(ifstream& in){
     try{
         cout <<"Pret: ";
         in>>pret;
@@ -54,7 +54,7 @@ void Produs::citirePret(istream& in){
         exit(EXIT_FAILURE);
     }
 }
-void Produs::citireCantitate(istream& in){
+void Produs::citireCantitate(ifstream& in){
     try{
         cout << "Cantitate: ";
         in >> cantitate;
@@ -65,7 +65,7 @@ void Produs::citireCantitate(istream& in){
         exit(EXIT_FAILURE);
     }
 }
-void Produs::citireUnitateMasura(istream& in){
+void Produs::citireUnitateMasura(ifstream& in){
     try{
         cout << "Unitate de masura: ";
         in >>unitateMasura;
@@ -79,20 +79,20 @@ void Produs::citireUnitateMasura(istream& in){
         exit(EXIT_FAILURE);
     }
 }
-void Produs::citire(istream& in){
+void Produs::citire(ifstream& in){
     citireNume(in);
     citirePret(in);
     citireCantitate(in);
     citireUnitateMasura(in);
 }
-istream& operator>>(istream& in, Produs& c){
+ifstream& operator>>(ifstream& in, Produs& c){
     c.citire(in);
     return in;
 }
 void Produs::afisare(ostream& out){
     //out << endl;
-    out<< numeProdus << endl;
-    out << "Pret: " << pret << " lei pe " << cantitate <<" "<< unitateMasura;
+    out<< endl << numeProdus << endl;
+    out << "Pret: " << pret << " lei pe " << cantitate <<" "<< unitateMasura<<"\n";
 }
 ostream& operator<<(ostream& out, Produs& c){
     c.afisare(out);

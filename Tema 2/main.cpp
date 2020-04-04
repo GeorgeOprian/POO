@@ -3,10 +3,12 @@
 // #include "mancare.cpp"
 // #include "bauturi.cpp"
 // #include "desert.cpp"
- #include "meniu.cpp"
+//  #include "meniu.cpp"
 
-// #include "meniu.h"
-// #include "desert.h"
+#include "meniu.h"
+#include "client.h"
+//#include "comanda.h"
+#include "desert.h"
 // #include "bauturi.h"
 // #include "mancare.h"
 // #include "produs.h"
@@ -16,17 +18,70 @@ using namespace std;
 
 //fa verificare cu this!=&x in supreaincarcarea pe=
 
-
+//nu uita sa modici citirile 
 int main()
 {
-    Meniu s;
-    cin>>s;
-    cout <<s;
-    Meniu s1 = s;   
-    cout <<s1;
-    Meniu s2;
-    s2 = s1;
-    cout <<s2;
+
+    // Desert d;
+    // cin >> d;
+    // cout <<d;
+
+    // Ciorba c1;
+    // cin >> c1;
+    // Ciorba c2;
+    // cin >> c2;
+    // vector<Produs*> produse;
+    
+    ifstream f("input.in");
+    Meniu m;
+    f>>m;
+    // cout <<m;
+
+    Client c(m);
+    cin >> c;
+    cout << c;
+
+    // Comanda c;
+    // cin>>c;
+    // cout <<c;
+    // Meniu c1 = c;   
+    // cout <<c1;
+    // Meniu c2;
+    // c2 = c1;
+    // cout <<c2;
+
+    // Meniu s1 = s;   
+    // cout <<s1;
+    // Meniu s2;
+    // s2 = s1;
+    // cout <<s2;
+
+    //clasa comanda mosteste meniu
+    //citire diferita (aici intervine dialogul cu chelnerul)
+
+    // Meniu s;
+    // cin>>s;
+    // cout <<s;
+    // Meniu s1 = s;   
+    // cout <<s1;
+    // Meniu s2;
+    // s2 = s1;
+    // cout <<s2;
+
+    
+
+    // persoana *p = new angajat;//upcast
+    // p.getnume_angajat();//down cast
+
+
+    // Meniu s;
+    // cin>>s;
+    // cout <<s;
+    // Meniu s1 = s;   
+    // cout <<s1;
+    // Meniu s2;
+    // s2 = s1;
+    // cout <<s2;
     
     // Bauturi s;
     // cin>>s;
@@ -121,14 +176,7 @@ int main()
     // s2 = s1;
     // cout <<s2;
 
-    // Ciorbe v;
-    // cin >> v;
-    // cout << v;
-    // Ciorbe v1 = v;
-    // cout << v1;
-    // Ciorbe v2;
-    // v2 = v1;
-    // cout << v2;
+    
 
     // int n =2;
     // vector<Supa*> s;

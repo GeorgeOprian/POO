@@ -1,7 +1,7 @@
 #include "bauturi.h"
 using namespace std;
 
- Vin::Vin(string numeProdus = "", int pret = 0, int cantitate = 0, string unitateMasura = "", string culoare = "")
+ Vin::Vin(string numeProdus, int pret, int cantitate , string unitateMasura , string culoare )
         :Produs(numeProdus, pret, cantitate, unitateMasura){
         this->culoare = culoare;
 }
@@ -15,7 +15,7 @@ Vin& Vin::operator=(const Vin& v){
     }
     return *this;
 }
-void Vin::citire(istream& in){
+void Vin::citire(ifstream& in){
     cout << "Vin pahar: \n";
     citireNume(in);
     citirePret(in);
@@ -24,21 +24,28 @@ void Vin::citire(istream& in){
     in >> culoare;
        
 }
-istream& operator>>(istream& in, Vin& v){
+ifstream& operator>>(ifstream& in, Vin& v){
     v.citire(in);
     return in;
 }
 void Vin::afisare(ostream& out){
-    out << numeProdus << " " << culoare;
+    out << numeProdus << " " << culoare << " " << pret * cantitate / 100 << " lei pe " << cantitate << " " << unitateMasura<< endl;
     out <<endl;
 }
 ostream& operator<<(ostream& out, Vin& v){
     v.afisare(out);
     return out;
 }
+
+string Vin::getCuloare(){
+    return culoare;
+}
+void Vin::setCuloare(string culoare){
+    this->culoare = culoare;
+}
 //implementare VinSticla
-VinSticla::VinSticla(string numeProdus ="", int pret = 0, int cantintate = 0, string unitateMasura = "", 
-                    string culoare = "", string brand = "", int an = 0):Vin(numeProdus, pret, cantintate, unitateMasura, culoare){
+VinSticla::VinSticla(string numeProdus, int pret, int cantintate, string unitateMasura , 
+                    string culoare , string brand , int):Vin(numeProdus, pret, cantintate, unitateMasura, culoare){
 
     this->brand = brand;
     this->an = an;
@@ -58,30 +65,36 @@ VinSticla& VinSticla::operator=(const VinSticla& v){
     return *this;
 }
 
-void VinSticla::citire(istream& in){
+void VinSticla::citire(ifstream& in){
     cout << "Vin sticla: \n";
     cout << "Introduceti brand-ul: ";
-    in >> brand;
+    getline(in, brand);
     cout << "Introduceti anul: ";
     in >>an;
     citireCantitate(in);
     citireUnitateMasura(in);
     citirePret(in);
 }
-istream& operator>>(istream& in, VinSticla& v){
+ifstream& operator>>(ifstream& in, VinSticla& v){
     v.citire(in);
     return in;
 }
 void VinSticla::afisare(ostream& out){
-    out << brand << " "<< an << " " << cantitate << " " << unitateMasura <<endl;
+    out << brand << " "<< an << " " << cantitate << " " << unitateMasura << " " << pret << " lei"<<endl;
 }
 ostream& operator<<(ostream& out, VinSticla& v){
     v.afisare(out);
     return out;
 }
+void VinSticla::setBrand(string brand){
+    this->brand = brand;
+}
+string VinSticla::getBrand(){
+    return brand;
+}
 
 //implementare clasa bere
-Bere::Bere(string numeProdus = "", int pret = 0, int cantitate = 0, string unitateMasura = "", string brand = "")
+Bere::Bere(string numeProdus , int pret, int cantitate, string unitateMasura , string brand )
         :Produs(numeProdus, pret, cantitate, unitateMasura){
     this->brand = brand;
 }
@@ -95,15 +108,15 @@ Bere& Bere::operator=(const Bere& b){
     }
     return *this;
 }
-void Bere::citire(istream& in){
+void Bere::citire(ifstream& in){
     cout << "Bere: \n";
     cout << "Brand: ";
-    in >> brand;
+    getline(in, brand);
     citireCantitate(in);
     citireUnitateMasura(in);
     citirePret(in);
 }
-istream& operator>>(istream& in, Bere& b){
+ifstream& operator>>(ifstream& in, Bere& b){
     b.citire(in);
     return in;
 }
@@ -115,8 +128,14 @@ ostream& operator<<(ostream& out, Bere& b){
     b.afisare(out);
     return out;
 }
+void Bere::setBrand(string brand){
+    this->brand = brand;
+}
+string Bere::getBrand(){
+    return brand;
+}
 //implementare clasa Apa
-Apa::Apa(string numeProdus = "", int pret = 0, int cantitate = 0, string unitateMasura = "", string brand = "", string aciditate = "")
+Apa::Apa(string numeProdus, int pret, int cantitate, string unitateMasura, string brand, string aciditate)
         :Produs(numeProdus, pret, cantitate, unitateMasura){
     this->brand = brand;
     this->aciditate = aciditate;
@@ -133,10 +152,10 @@ Apa& Apa::operator=(const Apa& a){
     }
     return *this;
 }
-void Apa::citire(istream& in){
+void Apa::citire(ifstream& in){
     cout << "Apa: \n";
     cout << "Brand: ";
-    in >> brand;
+    getline(in, brand);
     citireCantitate(in);
     citireUnitateMasura(in);
     citirePret(in);
@@ -149,7 +168,7 @@ void Apa::citire(istream& in){
         aciditate = "plata";
     }
 }
-istream& operator>>(istream& in, Apa& a){
+ifstream& operator>>(ifstream& in, Apa& a){
     a.citire(in);
     return in;
 }
@@ -161,119 +180,130 @@ ostream& operator<<(ostream& out, Apa& a){
     a.afisare(out);
     return out;
 }
-
+void Apa::setBrand(string brand){
+    this->brand = brand;
+}
+string Apa::getBrand(){
+    return brand;
+}
+void Apa::setAciditate(string aciditate){
+    this->aciditate = aciditate;
+}
+string Apa::getAciditate(){
+    return aciditate;
+}
 //implementare clasa bauturi
-Bauturi::Bauturi(vector<Vin> vinPahar = {}, int nrVinPahar = 0, vector<VinSticla> vinSticla = {}, int nrVinSticla = 0,
-                vector<Bere> bere = {}, int nrBeri = 0, vector<Apa> apa = {}, int nrApe = 0){
-    this->vinPahar = vinPahar;
-    this->nrVinPahar = nrVinPahar;
-    this->vinSticla = vinSticla;
-    this->nrVinSticla = nrVinSticla;
-    this->bere = bere;
-    this->nrBeri = nrBeri;
-    this->apa = apa;
-    this->nrApe = nrApe;
-}
+// Bauturi::Bauturi(vector<Vin> vinPahar = {}, int nrVinPahar = 0, vector<VinSticla> vinSticla = {}, int nrVinSticla = 0,
+//                 vector<Bere> bere = {}, int nrBeri = 0, vector<Apa> apa = {}, int nrApe = 0){
+//     this->vinPahar = vinPahar;
+//     this->nrVinPahar = nrVinPahar;
+//     this->vinSticla = vinSticla;
+//     this->nrVinSticla = nrVinSticla;
+//     this->bere = bere;
+//     this->nrBeri = nrBeri;
+//     this->apa = apa;
+//     this->nrApe = nrApe;
+// }
  
-Bauturi::Bauturi(const Bauturi& b){
-    this->vinPahar = b.vinPahar;
-    this->nrVinPahar = b.nrVinPahar;
-    this->vinSticla = b.vinSticla;
-    this->nrVinSticla = b.nrVinSticla;
-    this->bere = b.bere;
-    this->nrBeri = b.nrBeri;
-    this->apa = b.apa;
-    this->nrApe = b.nrApe;
-}
-Bauturi& Bauturi::operator=(const Bauturi& b){
-    if(this != &b){
-        this->vinPahar = b.vinPahar;
-        this->nrVinPahar = b.nrVinPahar;
-        this->vinSticla = b.vinSticla;
-        this->nrVinSticla = b.nrVinSticla;
-        this->bere = b.bere;
-        this->nrBeri = b.nrBeri;
-        this->apa = b.apa;
-        this->nrApe = b.nrApe;
-    }
-    return *this;
-}
+// Bauturi::Bauturi(const Bauturi& b){
+//     this->vinPahar = b.vinPahar;
+//     this->nrVinPahar = b.nrVinPahar;
+//     this->vinSticla = b.vinSticla;
+//     this->nrVinSticla = b.nrVinSticla;
+//     this->bere = b.bere;
+//     this->nrBeri = b.nrBeri;
+//     this->apa = b.apa;
+//     this->nrApe = b.nrApe;
+// }
+// Bauturi& Bauturi::operator=(const Bauturi& b){
+//     if(this != &b){
+//         this->vinPahar = b.vinPahar;
+//         this->nrVinPahar = b.nrVinPahar;
+//         this->vinSticla = b.vinSticla;
+//         this->nrVinSticla = b.nrVinSticla;
+//         this->bere = b.bere;
+//         this->nrBeri = b.nrBeri;
+//         this->apa = b.apa;
+//         this->nrApe = b.nrApe;
+//     }
+//     return *this;
+// }
 
-void Bauturi::citire(istream& in){
-    cout << "Introduceti numarul de vinuri la pahar: ";
-    in >>nrVinPahar;
-    if (nrVinPahar){
-        Vin v;
-        for (int i = 0; i < nrVinPahar; i++){
-            in.get();
-            in >> v;
-            vinPahar.push_back(v);
-        }
-    }
-    cout << "Introduceti numarul de branduri de vinuri la sticla: ";
-    in >>nrVinSticla;
-    if (nrVinSticla){
-        VinSticla v;
-        for (int i = 0; i < nrVinSticla; i++){
-            in.get();
-            in >> v;
-            vinSticla.push_back(v);
-        }
-    }
-    cout << "Introduceti numarul de branduri de bere: ";
-    in >>nrBeri;
-    if (nrBeri){
-        Bere b;
-        for (int i = 0; i < nrBeri; i++){
-            in.get();
-            in >> b;
-            bere.push_back(b);
-        }
-    }
-    cout << "Introduceti numarul de branduri de apa: ";
-    in >>nrApe;
-    if (nrApe){
-        Apa a;
-        for (int i = 0; i < nrApe; i++){
-            in.get();
-            in >> a;
-            apa.push_back(a);
-        }
-    }
-}
-istream& operator>>(istream& in, Bauturi& b){
-    b.citire(in);
-    return in;
-}
+// void Bauturi::citire(ifstream& in){
+//     cout << "Introduceti numarul de vinuri la pahar: ";
+//     in >>nrVinPahar;
+//     if (nrVinPahar){
+//         Vin v;
+//         for (int i = 0; i < nrVinPahar; i++){
+//             in.get();
+//             in >> v;
+//             vinPahar.push_back(v);
+//         }
+//     }
+//     cout << "Introduceti numarul de branduri de vinuri la sticla: ";
+//     in >>nrVinSticla;
+//     if (nrVinSticla){
+//         VinSticla v;
+//         for (int i = 0; i < nrVinSticla; i++){
+//             in.get();
+//             in >> v;
+//             vinSticla.push_back(v);
+//         }
+//     }
+//     cout << "Introduceti numarul de branduri de bere: ";
+//     in >>nrBeri;
+//     if (nrBeri){
+//         Bere b;
+//         for (int i = 0; i < nrBeri; i++){
+//             in.get();
+//             in >> b;
+//             bere.push_back(b);
+//         }
+//     }
+//     cout << "Introduceti numarul de branduri de apa: ";
+//     in >>nrApe;
+//     if (nrApe){
+//         Apa a;
+//         for (int i = 0; i < nrApe; i++){
+//             in.get();
+//             in >> a;
+//             apa.push_back(a);
+//         }
+//     }
+// }
+// ifstream& operator>>(ifstream& in, Bauturi& b){
+//     b.citire(in);
+//     return in;
+// }
 
-void Bauturi::afisare(ostream& out){
-    out << endl;
-    if (nrVinPahar){
-        out << "Vin la Pahar:\n";
-        for (int i = 0; i < nrVinPahar; i++){
-            out << vinPahar[i];
-        }
-    }
-    if (nrVinSticla){
-        out << "Vin la Sticla:\n";
-        for (int i = 0; i < nrVinSticla; i++){
-            out << vinSticla[i];
-        }
-    }
-    if (nrBeri){
-        out << "Bere:\n";
-        for (int i = 0; i < nrBeri; i++){
-            out << bere[i];
-        }
-    }
-    if (nrApe){
-        out << "Apar:\n";
-        for (int i = 0; i < nrApe; i++){
-            out << apa[i];
-        }
-    }
-}
-ostream& operator<<(ostream& out, Bauturi& b){
-    b.afisare(out);
-    return out;
-}
+// void Bauturi::afisare(ostream& out){
+//     out << endl;
+//     if (nrVinPahar){
+//         out << "Vin la Pahar:\n";
+//         for (int i = 0; i < nrVinPahar; i++){
+//             out << vinPahar[i];
+//         }
+//     }
+//     if (nrVinSticla){
+//         out << "Vin la Sticla:\n";
+//         for (int i = 0; i < nrVinSticla; i++){
+//             out << vinSticla[i];
+//         }
+//     }
+//     if (nrBeri){
+//         out << "Bere:\n";
+//         for (int i = 0; i < nrBeri; i++){
+//             out << bere[i];
+//         }
+//     }
+//     if (nrApe){
+//         out << "Apar:\n";
+//         for (int i = 0; i < nrApe; i++){
+//             out << apa[i];
+//         }
+//     }
+// }
+// ostream& operator<<(ostream& out, Bauturi& b){
+//     b.afisare(out);
+//     return out;
+// }

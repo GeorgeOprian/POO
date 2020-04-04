@@ -9,16 +9,20 @@
     protected:
         string culoare;
     public:
+        Vin() = default;
         Vin(string, int, int, string, string);
         Vin(const Vin&);
-        ~Vin(){};
+        virtual ~Vin(){};
         Vin& operator=(const Vin&);
 
-        void citire(istream&);
-        void afisare(ostream&);
+        virtual void citire(ifstream&);
+        virtual void afisare(ostream&);
 
-        friend istream& operator>>(istream&, Vin&);
+        friend ifstream& operator>>(ifstream&, Vin&);
         friend ostream& operator<<(ostream&, Vin&);
+
+        string getCuloare();
+        void setCuloare(string);
  };
  
  class VinSticla: public Vin
@@ -27,80 +31,91 @@
         string brand;
         int an;
     public:
+        VinSticla() = default;
         VinSticla(string, int, int, string, string, string, int);
         VinSticla(const VinSticla&);
         ~VinSticla(){};
 
         VinSticla& operator=(const VinSticla&);
 
-        void citire(istream&);
+        void citire(ifstream&);
         void afisare(ostream&);
 
-        friend istream& operator>>(istream&, Vin&);
+        friend ifstream& operator>>(ifstream&, Vin&);
         friend ostream& operator<<(ostream&, Vin&);
+        void setBrand(string);
+        string getBrand();
  };
  
-class Bere:Produs
+class Bere:public Produs
 {
     protected:
         string brand;
     public:
+        Bere() = default;
         Bere(string, int, int, string, string);
         Bere(const Bere&);
         ~Bere(){};
 
         Bere& operator=(const Bere&);
 
-        void citire(istream& in);
+        void citire(ifstream& in);
         void afisare(ostream& out);
 
-        friend istream& operator>>(istream&, Bere&);
+        friend ifstream& operator>>(ifstream&, Bere&);
         friend ostream& operator<<(ostream&, Bere&);
+        void setBrand(string);
+        string getBrand();
 };
 
 
-class Apa:Produs
+class Apa:public Produs
 {
     protected:
         string brand;
         string aciditate;
     public:
+        Apa() = default;
         Apa(string, int, int, string, string, string);
         Apa(const Apa&);
         ~Apa(){};
 
         Apa& operator=(const Apa&);
 
-        void citire(istream& in);
+        void citire(ifstream& in);
         void afisare(ostream& out);
 
-        friend istream& operator>>(istream&, Apa&);
+        friend ifstream& operator>>(ifstream&, Apa&);
         friend ostream& operator<<(ostream&, Apa&);
+        void setBrand(string);
+        void setAciditate(string);
+        string getBrand();
+        string getAciditate();
 };
 
- class Bauturi
- {
-    protected:
-        vector<Vin> vinPahar;
-        int nrVinPahar;
-        vector<VinSticla> vinSticla;
-        int nrVinSticla;
-        vector<Bere> bere;
-        int nrBeri;
-        vector<Apa> apa;
-        int nrApe;
-    public:
-        Bauturi(vector<Vin>, int, vector<VinSticla>, int, vector<Bere>, int, vector<Apa>, int);
-        Bauturi(const Bauturi&);
-        ~Bauturi(){};
-        Bauturi& operator=(const Bauturi&);
+//  class Bauturi
+//  {
+//     protected:
+//         vector<Vin> vinPahar;
+//         int nrVinPahar;
+//         vector<VinSticla> vinSticla;
+//         int nrVinSticla;
+//         vector<Bere> bere;
+//         int nrBeri;
+//         vector<Apa> apa;
+//         int nrApe;
+//     public:
+//         Bauturi(vector<Vin>, int, vector<VinSticla>, int, vector<Bere>, int, vector<Apa>, int);
+//         Bauturi(const Bauturi&);
+//         ~Bauturi(){};
+//         Bauturi& operator=(const Bauturi&);
 
-        void citire(istream&);
-        void afisare(ostream&);
+//         void citire(ifstream&);
+//         void afisare(ostream&);
 
-        friend istream& operator>>(istream&, Bauturi&);
-        friend ostream& operator<<(ostream&, Bauturi&);
+//         friend ifstream& operator>>(ifstream&, Bauturi&);
+//         friend ostream& operator<<(ostream&, Bauturi&);
 
- };
+//  };
  
 #endif

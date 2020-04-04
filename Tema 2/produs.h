@@ -13,20 +13,20 @@ class Produs
     string unitateMasura;
         
     public:
-        //Produs(){};
+        Produs() = default;
         Produs(string, int, int, string);
         Produs(const Produs&);
         virtual ~Produs(){};
 
         virtual Produs& operator=(const Produs&);
-        friend istream& operator>>(istream&, Produs&);
+        friend ifstream& operator>>(ifstream&, Produs&);
         friend ostream& operator<<(ostream&, Produs&);
 
-        virtual void citireNume(istream&);
-        virtual void citirePret(istream&);
-        virtual void citireUnitateMasura(istream&);
-        virtual void citireCantitate(istream&);
-        virtual void citire(istream&);
+        virtual void citireNume(ifstream&);
+        virtual void citirePret(ifstream&);
+        virtual void citireUnitateMasura(ifstream&);
+        virtual void citireCantitate(ifstream&);
+        virtual void citire(ifstream&);
         virtual void afisare(ostream&);
 
         void setNumeProdus(string);
