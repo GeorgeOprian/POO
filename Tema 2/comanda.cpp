@@ -228,7 +228,7 @@ void Comanda::citire(istream& in){
                         //cout << nrCupe;
                         p->setCantitate(nrCupe);
                     }
-                    cout << p->getCantitate()<<endl;
+                    //cout << p->getCantitate()<<endl;
                     listaProduse.push_back(new Desert);
                     *(Desert*)listaProduse[nrProduse] = *p;
                     //cout << "atribuie\n";
@@ -273,6 +273,7 @@ void Comanda::citire(istream& in){
                         *(Vin*)listaProduse[nrProduse] = *p;
                         nrProduse++;
                     }
+                    delete p;
                 }
                 if (!gasit){
                     cout << "Optiunea nu se afla in meniu\n";
@@ -374,11 +375,18 @@ ostream& operator<<(ostream& out, Comanda& c){
     return out;
 }
 void Comanda::calculeazaNota(){
+    //cout << "int torala:\n";
     for (int i = 0; i < nrProduse; i++){
+        //cout << *listaProduse[i];
+        //cout << "****" << listaProduse[i]->getPret() << "***\n";
         total += listaProduse[i]->getPret();
+        //cout << "****" << total<< "***\n";
         //cout << listaProduse[i]->getPret()<<"\n";
     }
     //cout << total;
+}
+void Comanda::setTotal(){
+    total = 0;
 }
 int Comanda::getTotal(){
     return total;

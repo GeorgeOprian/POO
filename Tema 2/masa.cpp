@@ -28,6 +28,7 @@ Masa& Masa::operator=(const Masa& m){
         this->nrLocuri = m.nrLocuri;
         this->totalMasa = m.totalMasa;
     }
+    return *this;
 }
 void Masa::setClienti(vector<Client> c){
     this->clienti = c;

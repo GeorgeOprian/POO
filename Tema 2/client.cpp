@@ -51,8 +51,10 @@ int Client::cheamaChelnerul(istream& in, ostream& out){
         if(individual){
             afiseazaComanda(out);
             cout << "\nTotal: " << comanda.getTotal() << " lei\n";
+            comanda.setTotal();
             return -1; //vrea nota individual
         }else{
+            
             return 1; //vrea nota la masa
         }
     }
@@ -75,3 +77,4 @@ ostream& operator<<(ostream& out, Client& c){
 int Client::getTotalConsumat(){
     return totalCosumat;
 }
+

@@ -8,6 +8,7 @@
 #include "meniu.h"
 #include "client.h"
 #include "comanda.h"
+#include "masa.h"
 //#include "comanda.h"
 #include "desert.h"
 // #include "bauturi.h"
@@ -38,13 +39,18 @@ int main()
     f>>m;
     cout << m;
 
-    Client c(m);
-    cin >> c;
-    cout << c;
+    vector<Client> clienti;
+    int nrClienti;
+
+    Masa(m, clienti, nrClienti);                   
+
+    // Client c(m);
+    // cin >> c;
+    //cout << c;
     //cout <<m;
 
-    //c.cheamaChelnerul(cin, cout);
-    //c.cheamaChelnerul(cin, cout);
+    // c.cheamaChelnerul(cin, cout);
+    // c.cheamaChelnerul(cin, cout);
     //c.afiseazaComanda(cout);
 
     //cout << c;

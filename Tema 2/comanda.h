@@ -27,6 +27,7 @@ class Comanda
 
         void calculeazaNota();
         int getTotal();
+        void setTotal();
 
 };
 
