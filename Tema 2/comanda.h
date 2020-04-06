@@ -9,9 +9,11 @@ class Comanda
         vector <Produs*> listaProduse;
         int nrProduse;
         int total;
+        friend class Client;
     public:
         Comanda();
-        Comanda(int, int);
+        Comanda(Meniu);
+        Comanda(Meniu, int, int);
         Comanda(const Comanda&);
         virtual ~Comanda() = default;
 
@@ -22,6 +24,9 @@ class Comanda
 
         friend istream& operator>>(istream&, Comanda&);
         friend ostream& operator<<(ostream&, Comanda&);
+
+        void calculeazaNota();
+        int getTotal();
 
 };
 

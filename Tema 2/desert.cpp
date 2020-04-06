@@ -40,7 +40,8 @@ ifstream& operator>>(ifstream& in, Desert& d){
 }
 void Desert::afisare(ostream& out){
     out<< endl << numeProdus << ":\n";
-    out << "Pret: " << pret * cantitate << " lei pe " << cantitate << " " << unitateMasura <<"\n";
+    out << "Pret: " << pret << " lei pe " << cantitate << " " << unitateMasura <<"\n";
+    this->pret = pret * cantitate;
 }
 ostream& operator<<(ostream& out, Desert& d){
     d.afisare(out);

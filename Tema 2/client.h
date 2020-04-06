@@ -3,6 +3,7 @@
 #include <bits/stdc++.h>
 
 #include "meniu.h"
+#include "comanda.h"
 
 using namespace std;
 
@@ -10,14 +11,14 @@ class Client
 {
     protected:
 
-        vector<Produs*> comanda;
-        int nrProduse;
         Meniu meniu;
+        Comanda comanda;
+        int nrProduse;
         int totalCosumat;
         bool comandaPreluata;
 
     public:
-        Client();
+        Client(){};
         // Client(Meniu, int, int);
         Client(Meniu);
         Client(Meniu, int, int);
@@ -28,13 +29,12 @@ class Client
         friend istream& operator>>(istream&, Client&);
         friend ostream& operator<<(ostream&, Client&);
 
-        void cheamaChelnerul(istream&);
+        int cheamaChelnerul(istream&, ostream&);
         void preiaComanda(istream&);
         void afiseazaComanda(ostream&);
-
-        void calculeazaNota();
-
         int getTotalConsumat();
+
+        
 };
 
 #endif

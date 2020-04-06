@@ -8,24 +8,33 @@
 class Masa
 {
     protected:
-        vector<Client*> clienti;
+        Meniu meniu;
+        vector<Client> clienti;
         int nrClienti;
         int nrLocuri;
+        int totalMasa;
     public:
-        Masa(/* args */);
-        ~Masa();
+        Masa();
+        Masa(Meniu, vector<Client>, int);
+        Masa(const Masa&);
+        ~Masa() = default;
+        Masa& operator=(const Masa&);
 
-        void calculeazaNota();
+
+        void preiaComanda(istream&);
+        void afiseazaNota(ostream&);
+
+        friend istream& operator>>(istream&, Masa&);
+        friend ostream& operator<<(ostream&, Masa&);
         
+        void setNrLocuri(int);
+        void setClienti(vector <Client>);
+        vector<Client> getclienti();
+        int getNrLocuri();
+
+        void cheamaChelnerul(istream&, ostream&);
 };
 
-Masa::Masa(/* args */)
-{
-}
-
-Masa::~Masa()
-{
-}
 
 
 #endif

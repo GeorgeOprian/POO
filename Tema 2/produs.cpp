@@ -109,6 +109,7 @@ void Produs::setPret(int pret){
 
 void Produs::setCantitate(int cantitate){
     this->cantitate= cantitate;
+    //cout <<"seteaza\n";
 }
 void Produs::setUnitateMasura(string unitateMasura){
     this->unitateMasura = unitateMasura;

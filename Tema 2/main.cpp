@@ -7,6 +7,7 @@
 
 #include "meniu.h"
 #include "client.h"
+#include "comanda.h"
 //#include "comanda.h"
 #include "desert.h"
 // #include "bauturi.h"
@@ -35,11 +36,22 @@ int main()
     ifstream f("input.in");
     Meniu m;
     f>>m;
-    // cout <<m;
+    cout << m;
 
     Client c(m);
     cin >> c;
     cout << c;
+    //cout <<m;
+
+    //c.cheamaChelnerul(cin, cout);
+    //c.cheamaChelnerul(cin, cout);
+    //c.afiseazaComanda(cout);
+
+    //cout << c;
+
+    // Comanda c(m);
+    // cin >> c;
+    // cout << c;
 
     // Comanda c;
     // cin>>c;

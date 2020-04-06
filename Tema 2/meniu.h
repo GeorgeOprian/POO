@@ -32,7 +32,7 @@ class Meniu
         int nrVinSticla;
         int nrBere;
         int nrApa;
-        friend class Client;
+        friend class Comanda;
     public:
         Meniu();
         Meniu(int, int, int, int, int, int, int, int, int, int);
