@@ -5,6 +5,9 @@
 class Comanda
 {
     protected:
+        /// De testat
+        // static int counterComanda;
+        // const int idComanda = counterComanda++;
         Meniu meniu;
         vector <Produs*> listaProduse;
         int nrProduse;
@@ -25,9 +28,11 @@ class Comanda
         friend istream& operator>>(istream&, Comanda&);
         friend ostream& operator<<(ostream&, Comanda&);
 
+        void setMeniu(Meniu);
+
         void calculeazaNota();
         int getTotal();
-        void setTotal();
+        
 
 };
 

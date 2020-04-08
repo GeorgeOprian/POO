@@ -9,6 +9,7 @@
 #include "client.h"
 #include "comanda.h"
 #include "masa.h"
+#include "restaurant.h"
 //#include "comanda.h"
 #include "desert.h"
 // #include "bauturi.h"
@@ -35,23 +36,36 @@ int main()
     // vector<Produs*> produse;
     
     ifstream f("input.in");
-    Meniu m;
-    f>>m;
-    cout << m;
+    Meniu meniu;
+    f>>meniu;
+    cout << meniu;
+    Restaurant r;
+    cin >>r;
+    cout <<r;
 
-    vector<Client> clienti;
-    int nrClienti;
+    // vector<Client> clienti;
 
-    Masa(m, clienti, nrClienti);                   
-
-    // Client c(m);
+    // Client c;
+    // Client c1;
+    // c.setMeniu(meniu);
     // cin >> c;
-    //cout << c;
-    //cout <<m;
+    // cout << c;
+    // c1.setMeniu(meniu);
+    // cin >> c1;
+    // cout << c1;
+
+    // clienti.push_back(c);
+    // clienti.push_back(c1);
+    // cout << "pune in vector\n";
+    // cout << clienti.size();
+    // Masa m(meniu, clienti); 
+    // cout << m;
+    // cout <<meniu;
 
     // c.cheamaChelnerul(cin, cout);
     // c.cheamaChelnerul(cin, cout);
-    //c.afiseazaComanda(cout);
+
+    // c.afiseazaComanda(cout);
 
     //cout << c;
 

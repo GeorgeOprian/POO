@@ -14,24 +14,24 @@ class Client
         Meniu meniu;
         Comanda comanda;
         int nrProduse;
-        int totalCosumat;
+        int totalConsumat;
         bool comandaPreluata;
 
     public:
         Client(){};
-        // Client(Meniu, int, int);
-        Client(Meniu);
-        Client(Meniu, int, int);
+        Client(const Meniu&);
+        Client(const Meniu&, int, int);
         Client (const Client&);
         ~Client() = default;
 
         Client& operator=(const Client&);
+        void preiaComanda(istream&);
+        int cheamaChelnerul(istream&, ostream&);
         friend istream& operator>>(istream&, Client&);
+        void afiseazaComanda(ostream&);
         friend ostream& operator<<(ostream&, Client&);
 
-        int cheamaChelnerul(istream&, ostream&);
-        void preiaComanda(istream&);
-        void afiseazaComanda(ostream&);
+        void setMeniu(Meniu);
         int getTotalConsumat();
 
         

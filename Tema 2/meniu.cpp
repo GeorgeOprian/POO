@@ -27,17 +27,66 @@ Meniu::Meniu(int nrSupe, int nrCiorbe, int nrPui, int nrVita, int nrGarnituri, i
     this->nrApa = nrApa;
 }
 Meniu::Meniu(const Meniu& m){
-    this->supe = m.supe;
-    this->ciorbe = m.ciorbe;
-    this->produsePui = m.produsePui;
-    this->produseVita = m.produseVita;
-    this->garnituri = m.garnituri;
-    this->deserturi = m.deserturi;
-    this->vinPahar = m.vinPahar;
-    this->vinSticla = m.vinSticla;
-    this->bere = m.bere;
-    this->apa = m.apa;
-
+    for(unsigned int i = 0; i < supe.size(); i++)
+        delete supe[i];
+    for(unsigned int i = 0 ;i < m.supe.size(); i++){
+        Supa *aux = dynamic_cast<Supa*>(m.supe[i]);
+        supe.push_back(new Supa(*aux));
+    }
+    for(unsigned int i = 0; i < ciorbe.size(); i++)
+        delete ciorbe[i];
+    for(unsigned int i = 0 ;i < m.ciorbe.size(); i++){
+        Ciorba *aux = dynamic_cast<Ciorba*>(m.ciorbe[i]);
+        ciorbe.push_back(new Ciorba(*aux));
+    }
+    for(unsigned int i = 0; i < produsePui.size(); i++)
+        delete produsePui[i];
+    for(unsigned int i = 0 ;i < m.produsePui.size(); i++){
+        Pui *aux = dynamic_cast<Pui*>(m.produsePui[i]);
+        produsePui.push_back(new Pui(*aux));
+    }
+    for(unsigned int i = 0; i < produseVita.size(); i++)
+        delete produseVita[i];
+    for(unsigned int i = 0 ;i < m.produseVita.size(); i++){
+        Vita *aux = dynamic_cast<Vita*>(m.produseVita[i]);
+        produseVita.push_back(new Vita(*aux));
+    }
+    for(unsigned int i = 0; i < garnituri.size(); i++)
+        delete garnituri[i];
+    for(unsigned int i = 0 ;i < m.garnituri.size(); i++){
+        Produs *aux = dynamic_cast<Produs*>(m.garnituri[i]);
+        garnituri.push_back(new Produs(*aux));
+    }
+    for(unsigned int i = 0; i < deserturi.size(); i++)
+        delete deserturi[i];
+    for(unsigned int i = 0 ;i < m.deserturi.size(); i++){
+        Desert *aux = dynamic_cast<Desert*>(m.deserturi[i]);
+        deserturi.push_back(new Desert(*aux));
+    }
+    for(unsigned int i = 0; i < vinPahar.size(); i++)
+        delete vinPahar[i];
+    for(unsigned int i = 0 ;i < m.vinPahar.size(); i++){
+        Vin *aux = dynamic_cast<Vin*>(m.vinPahar[i]);
+        vinPahar.push_back(new Vin(*aux));
+    }
+    for(unsigned int i = 0; i < vinSticla.size(); i++)
+        delete vinSticla[i];
+    for(unsigned int i = 0 ;i < m.vinSticla.size(); i++){
+        VinSticla *aux = dynamic_cast<VinSticla*>(m.vinSticla[i]);
+        vinSticla.push_back(new VinSticla(*aux));
+    }
+    for(unsigned int i = 0; i < bere.size(); i++)
+        delete bere[i];
+    for(unsigned int i = 0 ;i < m.bere.size(); i++){
+        Bere *aux = dynamic_cast<Bere*>(m.bere[i]);
+        bere.push_back(new Bere(*aux));
+    }
+    for(unsigned int i = 0; i < apa.size(); i++)
+        delete apa[i];
+    for(unsigned int i = 0 ;i < m.apa.size(); i++){
+        Apa *aux = dynamic_cast<Apa*>(m.apa[i]);
+        apa.push_back(new Apa(*aux));
+    }
     this->nrSupe = m.nrSupe;
     this->nrCiorbe = m.nrCiorbe;
     this->nrPui = m.nrPui;
@@ -52,17 +101,66 @@ Meniu::Meniu(const Meniu& m){
 }
 Meniu& Meniu::operator=(const Meniu& m){
     if (this!=&m){
-        this->supe = m.supe;
-        this->ciorbe = m.ciorbe;
-        this->produsePui = m.produsePui;
-        this->produseVita = m.produseVita;
-        this->garnituri = m.garnituri;
-        this->deserturi = m.deserturi;
-        this->vinPahar = m.vinPahar;
-        this->vinSticla = m.vinSticla;
-        this->bere = m.bere;
-        this->apa = m.apa;
-    
+        for(unsigned int i = 0; i < supe.size(); i++)
+            delete supe[i];
+        for(unsigned int i = 0 ;i < m.supe.size(); i++){
+            Supa *aux = dynamic_cast<Supa*>(m.supe[i]);
+            supe.push_back(new Supa(*aux));
+        }
+        for(unsigned int i = 0; i < ciorbe.size(); i++)
+            delete ciorbe[i];
+        for(unsigned int i = 0 ;i < m.ciorbe.size(); i++){
+            Ciorba *aux = dynamic_cast<Ciorba*>(m.ciorbe[i]);
+            ciorbe.push_back(new Ciorba(*aux));
+        }
+        for(unsigned int i = 0; i < produsePui.size(); i++)
+            delete produsePui[i];
+        for(unsigned int i = 0 ;i < m.produsePui.size(); i++){
+            Pui *aux = dynamic_cast<Pui*>(m.produsePui[i]);
+            produsePui.push_back(new Pui(*aux));
+        }
+        for(unsigned int i = 0; i < produseVita.size(); i++)
+            delete produseVita[i];
+        for(unsigned int i = 0 ;i < m.produseVita.size(); i++){
+            Vita *aux = dynamic_cast<Vita*>(m.produseVita[i]);
+            produseVita.push_back(new Vita(*aux));
+        }
+        for(unsigned int i = 0; i < garnituri.size(); i++)
+            delete garnituri[i];
+        for(unsigned int i = 0 ;i < m.garnituri.size(); i++){
+            Produs *aux = dynamic_cast<Produs*>(m.garnituri[i]);
+            garnituri.push_back(new Produs(*aux));
+        }
+        for(unsigned int i = 0; i < deserturi.size(); i++)
+            delete deserturi[i];
+        for(unsigned int i = 0 ;i < m.deserturi.size(); i++){
+            Desert *aux = dynamic_cast<Desert*>(m.deserturi[i]);
+            deserturi.push_back(new Desert(*aux));
+        }
+        for(unsigned int i = 0; i < vinPahar.size(); i++)
+            delete vinPahar[i];
+        for(unsigned int i = 0 ;i < m.vinPahar.size(); i++){
+            Vin *aux = dynamic_cast<Vin*>(m.vinPahar[i]);
+            vinPahar.push_back(new Vin(*aux));
+        }
+        for(unsigned int i = 0; i < vinSticla.size(); i++)
+            delete vinSticla[i];
+        for(unsigned int i = 0 ;i < m.vinSticla.size(); i++){
+            VinSticla *aux = dynamic_cast<VinSticla*>(m.vinSticla[i]);
+            vinSticla.push_back(new VinSticla(*aux));
+        }
+        for(unsigned int i = 0; i < bere.size(); i++)
+            delete bere[i];
+        for(unsigned int i = 0 ;i < m.bere.size(); i++){
+            Bere *aux = dynamic_cast<Bere*>(m.bere[i]);
+            bere.push_back(new Bere(*aux));
+        }
+        for(unsigned int i = 0; i < apa.size(); i++)
+            delete apa[i];
+        for(unsigned int i = 0 ;i < m.apa.size(); i++){
+            Apa *aux = dynamic_cast<Apa*>(m.apa[i]);
+            apa.push_back(new Apa(*aux));
+        }
         this->nrSupe = m.nrSupe;
         this->nrCiorbe = m.nrCiorbe;
         this->nrPui = m.nrPui;
@@ -89,8 +187,9 @@ void Meniu::citire(ifstream& in){
             for (int i =0; i < nrSupe; i++){
                 p = new Supa;
                 in.get();
+                cout << "ajung aici\n";
                 in  >> *p;
-                supe.push_back(p);
+                supe.push_back(new Supa(*(Supa *)p));
             }
             cout << "Introduceti numarul de ciorbe: ";;
             in >> nrCiorbe;
@@ -98,7 +197,7 @@ void Meniu::citire(ifstream& in){
                 p = new Ciorba;
                 in.get();
                 in >> *p;
-                ciorbe.push_back(p);
+                ciorbe.push_back(new Ciorba(*(Ciorba *)p));
             }
         }
         cout << "Doriti sa cititi produse din felul principal? (0/1) ";
@@ -110,7 +209,7 @@ void Meniu::citire(ifstream& in){
                 p = new Pui;
                 in.get();
                 in  >> *p;
-                produsePui.push_back(p);
+                produsePui.push_back(new Pui(*(Pui *)p));
             }
             cout << "Introduceti numarul de produse de vita: ";;
             in >> nrVita;
@@ -118,7 +217,7 @@ void Meniu::citire(ifstream& in){
                 p = new Vita;
                 in.get();
                 in  >> *p;
-                produseVita.push_back(p);
+                produseVita.push_back(new Vita(*(Vita *)p));
             }
         }
         cout  << "Doriti sa cititi ganituri? (0/1) ";
@@ -142,7 +241,7 @@ void Meniu::citire(ifstream& in){
                 p = new Desert;
                 in.get();
                 in  >> *p;
-                deserturi.push_back(p);
+                deserturi.push_back(new Desert(*(Desert*)p));
             }
         }
         cout << "Doriti sa cititi bauturi? (0/1) ";
@@ -154,7 +253,7 @@ void Meniu::citire(ifstream& in){
                 p = new Vin;
                 in.get();
                 in  >> *p;
-                vinPahar.push_back(p);
+                vinPahar.push_back(new Vin(*(Vin*)p));
             }
             cout << "Introduceti numarul de vinuri la sticla: ";;
             in >> nrVinSticla;
@@ -162,23 +261,23 @@ void Meniu::citire(ifstream& in){
                 p = new VinSticla;
                 in.get();
                 in  >> *p;
-                vinSticla.push_back(p);
+                vinSticla.push_back(new VinSticla(*(VinSticla *) p));
             }
-            cout << "Introduceti numarul de branduri de bere: ";;
+            cout << "Introduceti numarul de branduri de bere: ";
             in >> nrBere;
             for (int i =0; i < nrBere; i++){
                 p = new Bere;
                 in.get();
                 in  >> *p;
-                bere.push_back(p);
+                bere.push_back(new Bere(*(Bere *)p));
             }
-            cout << "Introduceti numarul de branduri de apa: ";;
+            cout << "Introduceti numarul de branduri de apa: ";
             in >> nrApa;
             for (int i =0; i < nrApa; i++){
                 p = new Apa;
                 in.get();
                 in  >> *p;
-                apa.push_back(p);
+                apa.push_back(new Apa(*(Apa *)p));
             }
         }
     }catch(bad_alloc var){

@@ -32,4 +32,27 @@ Restaurant& Restaurant::operator=(const Restaurant& r){
     return *this;
 }
 
+void Restaurant::citire(istream& in){
+    cout << "Introduceti numarul de mese: ";
+    in >> nrMese;
+    int n;
+    for (int i = 0; i < nrMese; i++){
+        cout << "Introduceti numarul de locuri ale masei " << i + 1 << ": ";
+        int n;
+        in >> n;
+        Masa m(meniu, n);
+        mese.push_back(m);
+    }
+}
+istream& operator>>(istream& in, Restaurant& r){
+    r.citire(in);
+    return in;
+}
+void Restaurant::afisare(ostream& out){
+    cout << nrMese;
+}
 
+ostream& operator<<(ostream& out, Restaurant& r){
+    r.afisare(out);
+    return out;
+}

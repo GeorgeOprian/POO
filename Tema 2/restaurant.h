@@ -20,10 +20,10 @@ class Restaurant
 
         Restaurant& operator=(const Restaurant&);
 
-        void citire(ifstream&, Restaurant&);
+        void citire(istream&);
         void afisare(ostream&);
 
-        friend ifstream& operator>>(ifstream&, Restaurant&);
+        friend istream& operator>>(istream&, Restaurant&);
         friend ostream& operator<<(ostream&, Restaurant&);
 
 };

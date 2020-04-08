@@ -3,23 +3,23 @@
 
 using namespace std;
 
-Client::Client(Meniu meniu):comanda(meniu){
+Client::Client(const Meniu& meniu):comanda(meniu){
     this->meniu = meniu;
     this->nrProduse = 0;
-    this->totalCosumat = 0;
+    this->totalConsumat = 0;
     this->comandaPreluata = 0;
 }
-Client::Client(Meniu meniu, int nrProduse, int totalConsumat):comanda(meniu){
+Client::Client(const Meniu& meniu, int nrProduse, int totalConsumat):comanda(meniu){
     this->meniu = meniu;
     this->nrProduse = nrProduse;
-    this->totalCosumat = totalCosumat;
+    this->totalConsumat = totalConsumat;
     this->comandaPreluata = 0;
 }
 Client::Client(const Client& c){
     this->comanda = c.comanda;
     this->nrProduse = c.nrProduse;
     this->meniu = c.meniu;
-    this->totalCosumat = c.totalCosumat;
+    this->totalConsumat = c.totalConsumat;
     this->comandaPreluata = c.comandaPreluata;
 }
 Client& Client::operator=(const Client& c){
@@ -27,7 +27,7 @@ Client& Client::operator=(const Client& c){
         this->comanda = c.comanda;
         this->nrProduse = c.nrProduse;
         this->meniu = c.meniu;
-        this->totalCosumat = c.totalCosumat;
+        this->totalConsumat = c.totalConsumat;
         this->comandaPreluata = c.comandaPreluata;
     }
     return *this;
@@ -50,8 +50,9 @@ int Client::cheamaChelnerul(istream& in, ostream& out){
         in.get();
         if(individual){
             afiseazaComanda(out);
-            cout << "\nTotal: " << comanda.getTotal() << " lei\n";
-            comanda.setTotal();
+            int total = comanda.getTotal();
+            totalConsumat = total;
+            out << "\nTotal: " << totalConsumat << " lei\n";
             return -1; //vrea nota individual
         }else{
             
@@ -68,6 +69,7 @@ istream& operator>>(istream& in, Client& c){
 void Client::afiseazaComanda(ostream& out){
     out << comanda;
     comanda.calculeazaNota();
+    totalConsumat = comanda.getTotal();
 }
 ostream& operator<<(ostream& out, Client& c){
     c.afiseazaComanda(out);
@@ -75,6 +77,10 @@ ostream& operator<<(ostream& out, Client& c){
 }
 
 int Client::getTotalConsumat(){
-    return totalCosumat;
+    return totalConsumat;
 }
 
+void Client::setMeniu(Meniu meniu){
+    this->meniu = meniu;
+    comanda.setMeniu(meniu);
+}
