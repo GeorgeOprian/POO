@@ -25,22 +25,4 @@ class Desert:public Produs
         int getNrMinUM();
         int getNrMaxUM();
 };
-
-
-// class Deserturi
-// {
-//     protected:
-//         vector<Desert> deserturi;
-//         int nrDeserturi;
-//     public:
-//         Deserturi(vector<Desert>, int);
-//         Deserturi(const Deserturi&);
-//         ~Deserturi(){};
-//         Deserturi& operator=(const Deserturi&);
-        
-//         void citire(ifstream&);
-//         void afisare(ostream&);
-//         friend ifstream& operator>>(ifstream&, Deserturi&);
-//         friend ostream& operator<<(ostream&, Deserturi&);
-// };
 #endif

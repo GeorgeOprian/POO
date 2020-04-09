@@ -11,12 +11,12 @@ class Masa
         Meniu meniu;
         vector<Client> clienti;
         unsigned int nrClienti;
-        int nrLocuri;
+        unsigned int nrLocuri;
         int totalMasa;
     public:
         Masa();
-        Masa(const Meniu&, int);
-        Masa(const Meniu&, vector<Client>);
+        Masa(const Meniu&, unsigned int);
+        Masa(const Meniu&, unsigned int, vector<Client>);
         Masa(const Masa&);
         ~Masa() = default;
         Masa& operator=(const Masa&);
@@ -33,6 +33,7 @@ class Masa
         void setMeniu(Meniu);
 
         int getNrLocuri();
+        int getNrClienti();
 
         void cheamaChelnerul(istream&, ostream&);
 };

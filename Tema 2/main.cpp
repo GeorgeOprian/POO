@@ -4,6 +4,7 @@
 // #include "bauturi.cpp"
 // #include "desert.cpp"
 //  #include "meniu.cpp"
+#include "interfata.h"
 
 #include "meniu.h"
 #include "client.h"
@@ -22,26 +23,76 @@ using namespace std;
 //fa verificare cu this!=&x in supreaincarcarea pe=
 
 //nu uita sa modici citirile 
+
 int main()
 {
+    system("clear");
+    Interfata menu;
+    bool exit = 0;
+    while (true)
+    {
+        system("clear");
+        menu.afiseaza_optiuni();
+        menu.citeste_optiunea();
+        system("clear");
+        switch (menu.get_optiune())
+        {
+            case 1:
+                system("clear");
+                menu.citireRestaurant(cin);
+                break;
 
-    // Desert d;
-    // cin >> d;
-    // cout <<d;
+            case 2:
+                system("clear");
+                menu.afisareRestaurant(cout);
+                break;
+            
+            case 3:
+                system("clear");
+                menu.afisareMeniu();
+                //cin.get();
+                break;
 
-    // Ciorba c1;
-    // cin >> c1;
-    // Ciorba c2;
-    // cin >> c2;
-    // vector<Produs*> produse;
+            case 4:
+                menu.interactiune();
+                break;
+            case 5:
+                menu.sosescClienti();
+                break;
+            case 6:
+                menu.afiseazaNumarClientiRestaurant();
+                break;
+            default:
+                system("clear");
+                cout << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&\n";
+                cout << "& Multumesc ca ai folosit aplicatia mea &\n";
+                cout << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&\n";
+                cout <<"Press enter to exit...";
+                cin.get();
+                exit = 1;
+                break;
+        }
+        if (exit)
+            break;
+        cout << "Press enter to continue...\n";
+        cin.get();
+    }
+
+
     
-    ifstream f("input.in");
-    Meniu meniu;
-    f>>meniu;
-    cout << meniu;
-    Restaurant r;
-    cin >>r;
-    cout <<r;
+//     ifstream f("input.in");
+//     Meniu meniu;
+//     f>>meniu;
+//     cout << meniu;
+//     Restaurant r;
+//     cin >>r;
+//     cout <<r;
+    
+//     Client c1;
+//     Client c2;
+//     Client c3;
+    
+
 
     // vector<Client> clienti;
 
@@ -68,8 +119,10 @@ int main()
     // c.afiseazaComanda(cout);
 
     //cout << c;
-
-    // Comanda c(m);
+    // ifstream f("input.in");
+    // Meniu meniu;
+    // f>>meniu;
+    // Comanda c(meniu);
     // cin >> c;
     // cout << c;
 

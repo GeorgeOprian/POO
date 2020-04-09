@@ -92,30 +92,5 @@ class Apa:public Produs
         string getBrand();
         string getAciditate();
 };
-
-//  class Bauturi
-//  {
-//     protected:
-//         vector<Vin> vinPahar;
-//         int nrVinPahar;
-//         vector<VinSticla> vinSticla;
-//         int nrVinSticla;
-//         vector<Bere> bere;
-//         int nrBeri;
-//         vector<Apa> apa;
-//         int nrApe;
-//     public:
-//         Bauturi(vector<Vin>, int, vector<VinSticla>, int, vector<Bere>, int, vector<Apa>, int);
-//         Bauturi(const Bauturi&);
-//         ~Bauturi(){};
-//         Bauturi& operator=(const Bauturi&);
-
-//         void citire(ifstream&);
-//         void afisare(ostream&);
-
-//         friend ifstream& operator>>(ifstream&, Bauturi&);
-//         friend ostream& operator<<(ostream&, Bauturi&);
-
-//  };
  
 #endif

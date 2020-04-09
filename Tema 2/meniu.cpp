@@ -99,6 +99,29 @@ Meniu::Meniu(const Meniu& m){
     this->nrApa = m.nrApa;
     
 }
+Meniu::~Meniu(){
+    /*for(unsigned int i = 0; i < supe.size(); i++)
+	delete supe[i];
+    for(unsigned int i = 0; i < ciorbe.size(); i++)
+        delete ciorbe[i];
+    for(unsigned int i = 0; i < produsePui.size(); i++)
+        delete produsePui[i];
+    for(unsigned int i = 0; i < produseVita.size(); i++)
+        delete produseVita[i];
+    for(unsigned int i = 0; i < garnituri.size(); i++)
+        delete garnituri[i];
+    for(unsigned int i = 0; i < deserturi.size(); i++)
+        delete deserturi[i];
+    for(unsigned int i = 0; i < vinPahar.size(); i++)
+        delete vinPahar[i];
+    for(unsigned int i = 0; i < vinSticla.size(); i++)
+        delete vinSticla[i];
+    for(unsigned int i = 0; i < bere.size(); i++)
+        delete bere[i];
+    for(unsigned int i = 0; i < apa.size(); i++)
+        delete apa[i];*/
+
+}
 Meniu& Meniu::operator=(const Meniu& m){
     if (this!=&m){
         for(unsigned int i = 0; i < supe.size(); i++)
@@ -179,19 +202,19 @@ void Meniu::citire(ifstream& in){
     Produs* p;
     
     try{
-        cout << "Doriti sa cititi supe/ciorbe? (0/1) ";
+        //cout << "Doriti sa cititi supe/ciorbe? (0/1) ";
         in >> optiune;
         if (optiune){
-            cout << "Introduceti numarul de supe: ";;
+            //cout << "Introduceti numarul de supe: ";;
             in >> nrSupe;
             for (int i =0; i < nrSupe; i++){
                 p = new Supa;
                 in.get();
-                cout << "ajung aici\n";
+                //cout << "ajung aici\n";
                 in  >> *p;
                 supe.push_back(new Supa(*(Supa *)p));
             }
-            cout << "Introduceti numarul de ciorbe: ";;
+            //cout << "Introduceti numarul de ciorbe: ";;
             in >> nrCiorbe;
             for (int i =0; i < nrCiorbe; i++){
                 p = new Ciorba;
@@ -200,10 +223,10 @@ void Meniu::citire(ifstream& in){
                 ciorbe.push_back(new Ciorba(*(Ciorba *)p));
             }
         }
-        cout << "Doriti sa cititi produse din felul principal? (0/1) ";
+        //cout << "Doriti sa cititi produse din felul principal? (0/1) ";
         in >> optiune;
         if (optiune){
-            cout << "Introduceti numarul de produse de pui: ";;
+            //cout << "Introduceti numarul de produse de pui: ";;
             in >> nrPui;
             for (int i =0; i < nrPui; i++){
                 p = new Pui;
@@ -211,7 +234,7 @@ void Meniu::citire(ifstream& in){
                 in  >> *p;
                 produsePui.push_back(new Pui(*(Pui *)p));
             }
-            cout << "Introduceti numarul de produse de vita: ";;
+            //cout << "Introduceti numarul de produse de vita: ";;
             in >> nrVita;
             for (int i =0; i < nrVita; i++){
                 p = new Vita;
@@ -220,10 +243,10 @@ void Meniu::citire(ifstream& in){
                 produseVita.push_back(new Vita(*(Vita *)p));
             }
         }
-        cout  << "Doriti sa cititi ganituri? (0/1) ";
+        //cout  << "Doriti sa cititi ganituri? (0/1) ";
         in >> optiune;
         if (optiune){
-            cout << "Introduceti numarul de garnituri: ";;
+            //cout << "Introduceti numarul de garnituri: ";;
             in >> nrGarnituri;
             for (int i =0; i < nrGarnituri; i++){
                 p = new Produs;
@@ -232,10 +255,10 @@ void Meniu::citire(ifstream& in){
                 garnituri.push_back(p);
             }
         }
-        cout << "Doriti sa cititi deserturi? (0/1) ";
+        //cout << "Doriti sa cititi deserturi? (0/1) ";
         in >> optiune;
         if (optiune){
-            cout << "Introduceti numarul de deserturi: ";;
+            //cout << "Introduceti numarul de deserturi: ";;
             in >> nrDeserturi;
             for (int i =0; i < nrDeserturi; i++){
                 p = new Desert;
@@ -244,10 +267,10 @@ void Meniu::citire(ifstream& in){
                 deserturi.push_back(new Desert(*(Desert*)p));
             }
         }
-        cout << "Doriti sa cititi bauturi? (0/1) ";
+        //cout << "Doriti sa cititi bauturi? (0/1) ";
         in >> optiune;
         if (optiune){
-            cout << "Introduceti numarul de vinuri la pahar: ";;
+            //cout << "Introduceti numarul de vinuri la pahar: ";;
             in >> nrVinPahar;
             for (int i =0; i < nrVinPahar; i++){
                 p = new Vin;
@@ -255,7 +278,7 @@ void Meniu::citire(ifstream& in){
                 in  >> *p;
                 vinPahar.push_back(new Vin(*(Vin*)p));
             }
-            cout << "Introduceti numarul de vinuri la sticla: ";;
+            //cout << "Introduceti numarul de vinuri la sticla: ";;
             in >> nrVinSticla;
             for (int i =0; i < nrVinSticla; i++){
                 p = new VinSticla;
@@ -263,7 +286,7 @@ void Meniu::citire(ifstream& in){
                 in  >> *p;
                 vinSticla.push_back(new VinSticla(*(VinSticla *) p));
             }
-            cout << "Introduceti numarul de branduri de bere: ";
+            //cout << "Introduceti numarul de branduri de bere: ";
             in >> nrBere;
             for (int i =0; i < nrBere; i++){
                 p = new Bere;
@@ -271,7 +294,7 @@ void Meniu::citire(ifstream& in){
                 in  >> *p;
                 bere.push_back(new Bere(*(Bere *)p));
             }
-            cout << "Introduceti numarul de branduri de apa: ";
+            //cout << "Introduceti numarul de branduri de apa: ";
             in >> nrApa;
             for (int i =0; i < nrApa; i++){
                 p = new Apa;

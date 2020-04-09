@@ -28,7 +28,7 @@ Produs& Produs::operator=(const Produs& p){
 }
 void Produs::citireNume(ifstream& in){
     try {
-        cout <<"Nume: ";
+        //cout <<"Nume: ";
         getline(in, numeProdus);
         for (unsigned int i = 0; i<numeProdus.size(); i++)
             if (numeProdus[i] != ' '){
@@ -39,35 +39,35 @@ void Produs::citireNume(ifstream& in){
                 }   
             }
     }catch (int x){
-        cout <<"Numele produsului trebuie sa contina doar litere";
+        //cout <<"Numele produsului trebuie sa contina doar litere";
         exit(EXIT_FAILURE);
     }
 }
 void Produs::citirePret(ifstream& in){
     try{
-        cout <<"Pret: ";
+        //cout <<"Pret: ";
         in>>pret;
         if (pret < 0 )
             throw -1;
     }catch(int x){
-        cout <<"Pretul trebuie sa fie un numar pozitiv\n";
+        //cout <<"Pretul trebuie sa fie un numar pozitiv\n";
         exit(EXIT_FAILURE);
     }
 }
 void Produs::citireCantitate(ifstream& in){
     try{
-        cout << "Cantitate: ";
+        //cout << "Cantitate: ";
         in >> cantitate;
         if (cantitate < 0 )
             throw -1;
     }catch(int x){
-        cout <<"Cantitatea trebuie sa fie un numar pozitiv\n";
+        //cout <<"Cantitatea trebuie sa fie un numar pozitiv\n";
         exit(EXIT_FAILURE);
     }
 }
 void Produs::citireUnitateMasura(ifstream& in){
     try{
-        cout << "Unitate de masura: ";
+        //cout << "Unitate de masura: ";
         in >>unitateMasura;
         if (unitateMasura.size() > 5) throw 1;
         for (unsigned int i = 0; i < unitateMasura.size(); i++)
@@ -75,7 +75,7 @@ void Produs::citireUnitateMasura(ifstream& in){
                 throw 1;
             }
     }catch(int x){
-        cout << "Unitatea de masura trebuie sa contina doar litere mici\n";
+        //cout << "Unitatea de masura trebuie sa contina doar litere mici\n";
         exit(EXIT_FAILURE);
     }
 }
@@ -109,7 +109,6 @@ void Produs::setPret(int pret){
 
 void Produs::setCantitate(int cantitate){
     this->cantitate= cantitate;
-    //cout <<"seteaza\n";
 }
 void Produs::setUnitateMasura(string unitateMasura){
     this->unitateMasura = unitateMasura;

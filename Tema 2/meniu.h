@@ -21,7 +21,7 @@ class Meniu
         vector <Produs*> vinSticla;
         vector <Produs*> bere;
         vector <Produs*> apa;
-        //adauga bauturile pe rand
+        
         int nrSupe;
         int nrCiorbe;
         int nrPui;
@@ -37,7 +37,7 @@ class Meniu
         Meniu();
         Meniu(int, int, int, int, int, int, int, int, int, int);
         Meniu(const Meniu&);
-        virtual ~Meniu(){};
+        virtual ~Meniu();
         Meniu& operator=(const Meniu&);
 
         virtual void citire(ifstream&);

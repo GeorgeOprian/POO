@@ -7,17 +7,22 @@ Masa::Masa(){
     nrLocuri = 0;
     totalMasa = 0;
 }
-Masa::Masa(const Meniu&, int nrLocuri){
+Masa::Masa(const Meniu&, unsigned int nrLocuri){
     this->meniu = meniu;
     this->nrLocuri = nrLocuri;
+    nrClienti = 0;
 }
-Masa::Masa(const Meniu& meniu, vector<Client> clienti){
+Masa::Masa(const Meniu& meniu, unsigned int nrLocuri, vector<Client> clienti){
     this->meniu = meniu;
     this->totalMasa = 0; 
-    nrLocuri = 0;
+    this->nrLocuri = nrLocuri;
+    this->nrClienti = 0;
     if (clienti.size() < nrLocuri){
         this->nrClienti = clienti.size();
-        this->clienti = clienti;
+        for(unsigned int i = 0; i < nrClienti; i++){
+            this->clienti.push_back(clienti[i]);
+            this->clienti[i].setMeniu(meniu);
+        }
     }else{
         cout << "Masa nu are suficiente locuri\n";
     }
@@ -40,9 +45,8 @@ Masa& Masa::operator=(const Masa& m){
     return *this;
 }
 
-
-
 void Masa::preiaComanda(istream& in){
+    cout << "Meniul in masa:\n" << meniu;
     for (unsigned int i = 0; i < nrClienti; i++){
         cout << "Clientul " << i + 1 << ":\n";
         in >>clienti[i];
@@ -58,7 +62,7 @@ void Masa::cheamaChelnerul(istream& in, ostream& out){
     int nrClient;
     in >> nrClient;
     nrClient--;
-    in.get();
+    //in.get();
     bool preferinta = clienti[nrClient].cheamaChelnerul(in, out);
     if(preferinta){
         if (preferinta == 1){
@@ -86,14 +90,16 @@ void Masa::setMeniu(Meniu meniu){
     this->meniu = meniu;
 }
 void Masa::setClienti(vector<Client> clienti){
-    if (clienti.size() < nrLocuri){
+    if (clienti.size() <= nrLocuri){
         this->nrClienti = clienti.size();
-        this->clienti = clienti;
-        this->nrClienti = clienti.size();
+        cout << "in clieni"
         for(unsigned int i = 0; i < nrClienti; i++){
+            cout << i << " ";
             this->clienti.push_back(clienti[i]);
-            this->clienti[i].setMeniu(meniu);
+            cout << this->clienti[i];
+            //this->clienti[i].setMeniu(meniu);
         }
+        cout <<endl;
     }else{
         cout << "Masa nu are suficiente locuri\n";
     }
@@ -106,4 +112,7 @@ vector<Client> Masa::getclienti(){
 }
 int Masa::getNrLocuri(){
     return nrLocuri;
+}
+int Masa::getNrClienti(){
+    return nrClienti;
 }

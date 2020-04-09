@@ -36,17 +36,17 @@ Comanda& Comanda::operator=(const Comanda& c){
     return *this;
 }
 void Comanda::citire(istream& in){
+    cout << "meniul in comanda:" << meniu << " *\n";
     string optiune;
+    //in.get();
     cout << "\nDoriti supa sau ciorba?\n";
     getline(in, optiune);
-    //Produs* p;
     if (optiune == "Da" || optiune == "da"){
         cout << "Ce sa fie?\n";
         getline(in, optiune);
         if (optiune == "supa" || optiune == "Supa"){
             cout << "\nDe care doriti?\n";
             getline(in, optiune);
-            //cout <<" citeste supa\n";
             bool ok = 0;
             for (int i = 0; i< meniu.nrSupe; i++){
                 if (meniu.supe[i]->getNumeProdus() == optiune){
@@ -54,12 +54,9 @@ void Comanda::citire(istream& in){
                     Supa* p;
                     p = new Supa;
                     listaProduse.push_back(p);
-                    //dynamic_cast<Supa*>(listaProduse[nrProduse]);
                     listaProduse[nrProduse] = meniu.supe[i];
                     string nume = meniu.supe[i]->getNumeProdus();
                     listaProduse[nrProduse]->setNumeProdus("supa de " + nume);
-                    //cout <<"Atribuie\n";
-                    //listaProduse.push_back(dynamic_cast<Produs*>(supe[i]));
                     nrProduse++;
                     delete p;
                 }
@@ -67,7 +64,6 @@ void Comanda::citire(istream& in){
             if (!ok){
                 cout << "Obtiunea nu se afla in meniu\n";
             }
-            //nrSupe++;
         }
         if (optiune == "ciorba" || optiune == "Ciorba"){
             cout << "\nDe care doriti?\n";
@@ -91,7 +87,6 @@ void Comanda::citire(istream& in){
                     string nume = meniu.ciorbe[i]->getNumeProdus();
                     p->setNumeProdus("ciorba de " + nume);
                     *(Ciorba*)listaProduse[nrProduse] = *p;
-                    //cout << *listaProduse[nrProduse];
                     nrProduse++;
                     delete p;
                 }
@@ -118,11 +113,9 @@ void Comanda::citire(istream& in){
                     ok = 1;
                     amComandat = 1;
                     listaProduse.push_back(p);
-                    //dynamic_cast<Supa*>(listaProduse[nrProduse]);
                     listaProduse[nrProduse] = meniu.produsePui[i];
                     string nume = meniu.produsePui[i]->getNumeProdus();
                     listaProduse[nrProduse]->setNumeProdus(nume + " de pui");
-                    //listaProduse.push_back(dynamic_cast<Produs*>(supe[i]));
                     nrProduse++;
                 }
             }
@@ -144,11 +137,8 @@ void Comanda::citire(istream& in){
                     Vita *p = new Vita;
                     *p = *(Vita*)meniu.produseVita[i];
                     p->setGradPregatire(gradPregatire);
-                    //cout << *p;
                     string nume = meniu.produseVita[i]->getNumeProdus();
-                    //cout <<"trece de nume\n";
                     p->setNumeProdus(nume + " de vita");
-                    //cout << "seteaza numele\n"<<*p;
                     listaProduse.push_back(new Vita);
                     *(Vita*)listaProduse[nrProduse] = *p;
                     delete p;
@@ -166,16 +156,13 @@ void Comanda::citire(istream& in){
             getline(in, optiune);
             if (optiune == "Da" || optiune == "da"){
                 cout << "Ce sa fie?\n";
-                //in.get();
                 getline(in, optiune);
                 bool ok = 0;
                 for (int i = 0; i< meniu.nrGarnituri; i++){
                     if (meniu.garnituri[i]->getNumeProdus() == optiune){
                         ok = 1;
                         listaProduse.push_back(new Produs);
-                        //dynamic_cast<Supa*>(listaProduse[nrProduse]);
                         *listaProduse[nrProduse] = *meniu.garnituri[i];
-                        //listaProduse.push_back(dynamic_cast<Produs*>(supe[i]));
                         nrProduse++;
                     }
                 }
@@ -195,7 +182,6 @@ void Comanda::citire(istream& in){
             for (int i = 0; i< meniu.nrDeserturi; i++){
                 if (meniu.deserturi[i]->getNumeProdus() == optiune){
                     ok = 1;
-                    //cout << *meniu.deserturi[i];
                     listaProduse.push_back(new Desert);
                     *listaProduse[nrProduse] = *meniu.deserturi[i];
                     nrProduse++;
@@ -218,7 +204,6 @@ void Comanda::citire(istream& in){
                     int nrCupe;
                     in >> nrCupe;
                     in.get();
-                    //cout << "citeste\n";
                     if (nrCupe < p->getNrMinUM() || nrCupe > p->getNrMaxUM()){
                         if (nrCupe < p->getNrMinUM()){
                             cout << "Nu puteti alege mai putin de " << p->getNrMinUM() << " " << p->getUnitateMasura();
@@ -231,13 +216,10 @@ void Comanda::citire(istream& in){
                             p->setCantitate( p->getNrMaxUM());
                         }
                     }else{
-                        //cout << nrCupe;
                         p->setCantitate(nrCupe);
                     }
-                    //cout << p->getCantitate()<<endl;
                     listaProduse.push_back(new Desert);
                     *(Desert*)listaProduse[nrProduse] = *p;
-                    //cout << "atribuie\n";
                     nrProduse++;
                     delete p;
                 }
@@ -294,14 +276,11 @@ void Comanda::citire(istream& in){
                 for (int i = 0; i < meniu.nrVinSticla; i++){
                     VinSticla* p = new VinSticla;
                     *p = *(VinSticla*) (meniu.vinSticla[i]);
-                    //cout << *p;
                     if (p->getBrand() == brand){
                         gasit = 1;
-                        //cout << *p;
                         p->setNumeProdus("\nVin " + brand);
                         listaProduse.push_back(new VinSticla);
                         *(VinSticla*)listaProduse[nrProduse] = *p;
-                        //cout <<*listaProduse[nrProduse]<<endl;
                         nrProduse++;
                     }
                     delete p;
@@ -319,14 +298,11 @@ void Comanda::citire(istream& in){
             for (int i = 0; i < meniu.nrBere; i++){
                 Bere* p = new Bere;
                 *p = *(Bere*) (meniu.bere[i]);
-                //cout << *p;
                 if (p->getBrand() == brand){
                     gasit = 1;
-                    //cout << *p;
                     p->setNumeProdus("\nBere " + brand);
                     listaProduse.push_back(new Bere);
                     *(Bere*)listaProduse[nrProduse] = *p;
-                    //cout <<*listaProduse[nrProduse]<<endl;
                     nrProduse++;
                 }
                 delete p;
@@ -347,12 +323,9 @@ void Comanda::citire(istream& in){
             for (int i = 0; i < meniu.nrApa; i++){
                 Apa* p = new Apa;
                 *p = *(Apa*) (meniu.apa[i]);
-                //cout << *p;
                 if (p->getBrand() == brand && p->getAciditate() == aciditate){
                     gasit = 1;
-                    //cout << *p;
                     p->setNumeProdus("/nApa " + brand);
-                    //p->setAciditate(aciditate);
                     listaProduse.push_back(new Apa);
                     *(Apa*)listaProduse[nrProduse] = *p;
                     
@@ -372,7 +345,6 @@ istream& operator>>(istream& in, Comanda& c){
     return in;
 }
 void Comanda::afisare(ostream& out){
-    //cout << "dimensiunea listei: "<< listaProduse.size()<<endl;
     for (int i = 0; i< nrProduse; i++){
         out << *listaProduse[i];
     }
@@ -382,7 +354,6 @@ ostream& operator<<(ostream& out, Comanda& c){
     return out;
 }
 void Comanda::calculeazaNota(){
-    // cout << "in torala:\n";
     total = 0;
     for (int i = 0; i < nrProduse; i++){
         //cout << *listaProduse[i];
@@ -398,5 +369,6 @@ int Comanda::getTotal(){
     return total;
 }
 void Comanda::setMeniu(Meniu meniu){
+    cout << "intra in seterul de meniu din comanda\n";
     this->meniu = meniu;
 }

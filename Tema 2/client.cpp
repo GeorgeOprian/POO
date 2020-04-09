@@ -4,12 +4,14 @@
 using namespace std;
 
 Client::Client(const Meniu& meniu):comanda(meniu){
+    nrClientiRestaurant++;
     this->meniu = meniu;
     this->nrProduse = 0;
     this->totalConsumat = 0;
     this->comandaPreluata = 0;
 }
 Client::Client(const Meniu& meniu, int nrProduse, int totalConsumat):comanda(meniu){
+    nrClientiRestaurant++;
     this->meniu = meniu;
     this->nrProduse = nrProduse;
     this->totalConsumat = totalConsumat;
@@ -34,6 +36,7 @@ Client& Client::operator=(const Client& c){
 }
 
 void Client::preiaComanda(istream& in){
+    cout << "meniul in client:\n" << meniu;
     in >> comanda;
 }
 

@@ -32,30 +32,7 @@ class Ciorba: public Produs
 
         void setArdei(bool);
         void setSmantana(bool);
-        
-        //void afisareProduse();
 };
-
-// class Ciorbe
-// {
-//     protected:
-//         vector<Ciorba> ciorbe;
-//         int nrCiorbe;
-//         vector<Supa> supe;
-//         int nrSupe;
-//     public:
-//         Ciorbe(){};
-//         Ciorbe(vector<Ciorba>, int, vector<Supa>, int);
-//         Ciorbe(const Ciorbe&);
-//         ~Ciorbe(){};
-//         Ciorbe& operator=(const Ciorbe&);
-        
-//         void citire(ifstream&);
-//         void afisare(ostream&);
-
-//         friend ifstream& operator>>(ifstream& in, Ciorbe&);
-//         friend ostream& operator<<(ostream& out, Ciorbe&);
-// };
 
 class Pui: public Produs
 {
@@ -84,27 +61,5 @@ class Vita: public Produs
         void setGradPregatire(string);
         string getGradPregatire();
 };
-
-// class FeluriPrincipale
-// {
-//     protected:
-//         vector<Pui> feluriPui;
-//         int nrFeluriPui;
-//         vector<Vita> feluriVita;
-//         int nrFeluriVita;
-//         vector<Produs> garnituri;
-//         int nrGarnituri;
-//     public:
-//         FeluriPrincipale(vector<Pui>, int, vector<Vita>, int, vector<Produs>, int);
-//         FeluriPrincipale(const FeluriPrincipale&);
-//         ~FeluriPrincipale(){};
-//         FeluriPrincipale& operator=(const FeluriPrincipale&);
-        
-//         void citire(ifstream&);
-//         void afisare(ostream&);
-
-//         friend ifstream& operator>>(ifstream& in, FeluriPrincipale&);
-//         friend ostream& operator<<(ostream& out, FeluriPrincipale&);
-// };
 
 #endif

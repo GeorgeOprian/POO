@@ -16,9 +16,10 @@ class Client
         int nrProduse;
         int totalConsumat;
         bool comandaPreluata;
+        static int nrClientiRestaurant;
 
     public:
-        Client(){};
+        Client():comanda(meniu){nrClientiRestaurant++;};
         Client(const Meniu&);
         Client(const Meniu&, int, int);
         Client (const Client&);
@@ -33,6 +34,10 @@ class Client
 
         void setMeniu(Meniu);
         int getTotalConsumat();
+
+        static void numarClienitIntratiInRestaurant(){
+            cout << "Numarul de clienti care au intrat in restaurant este: " << nrClientiRestaurant << endl;
+        }
 
         
 };

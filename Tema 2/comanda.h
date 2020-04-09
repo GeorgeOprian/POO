@@ -5,9 +5,6 @@
 class Comanda
 {
     protected:
-        /// De testat
-        // static int counterComanda;
-        // const int idComanda = counterComanda++;
         Meniu meniu;
         vector <Produs*> listaProduse;
         int nrProduse;
