@@ -345,6 +345,7 @@ istream& operator>>(istream& in, Comanda& c){
     return in;
 }
 void Comanda::afisare(ostream& out){
+    cout << "Ati comandat:\n";
     for (int i = 0; i< nrProduse; i++){
         out << *listaProduse[i];
     }

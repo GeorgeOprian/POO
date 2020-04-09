@@ -2,7 +2,13 @@
 
 
 using namespace std;
-
+Client::Client(){
+    nrClientiRestaurant++;
+    this->meniu = meniu;
+    this->nrProduse = 0;
+    this->totalConsumat = 0;
+    this->comandaPreluata = 0;
+}
 Client::Client(const Meniu& meniu):comanda(meniu){
     nrClientiRestaurant++;
     this->meniu = meniu;
@@ -36,6 +42,7 @@ Client& Client::operator=(const Client& c){
 }
 
 void Client::preiaComanda(istream& in){
+    cout << "in client preia comanda\n";
     cout << "meniul in client:\n" << meniu;
     in >> comanda;
 }
@@ -70,7 +77,8 @@ istream& operator>>(istream& in, Client& c){
     return in;
 }
 void Client::afiseazaComanda(ostream& out){
-    out << comanda;
+    out << "sunt client\n";
+    out << comanda.meniu;
     comanda.calculeazaNota();
     totalConsumat = comanda.getTotal();
 }

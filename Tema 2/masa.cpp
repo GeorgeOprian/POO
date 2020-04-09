@@ -49,7 +49,7 @@ void Masa::preiaComanda(istream& in){
     cout << "Meniul in masa:\n" << meniu;
     for (unsigned int i = 0; i < nrClienti; i++){
         cout << "Clientul " << i + 1 << ":\n";
-        in >>clienti[i];
+        in >> clienti[i];
         cout <<endl;
     }
 }
@@ -92,12 +92,13 @@ void Masa::setMeniu(Meniu meniu){
 void Masa::setClienti(vector<Client> clienti){
     if (clienti.size() <= nrLocuri){
         this->nrClienti = clienti.size();
-        cout << "in clieni"
+        cout << "in clieni";
         for(unsigned int i = 0; i < nrClienti; i++){
             cout << i << " ";
             this->clienti.push_back(clienti[i]);
+            //cout << this->clienti[i];
+            this->clienti[i].setMeniu(meniu);
             cout << this->clienti[i];
-            //this->clienti[i].setMeniu(meniu);
         }
         cout <<endl;
     }else{

@@ -26,29 +26,29 @@ using namespace std;
 
 int main()
 {
-    system("clear");
+    system("CLS");
     Interfata menu;
     bool exit = 0;
     while (true)
     {
-        system("clear");
+        system("CLS");
         menu.afiseaza_optiuni();
         menu.citeste_optiunea();
-        system("clear");
+        system("CLS");
         switch (menu.get_optiune())
         {
             case 1:
-                system("clear");
+                system("CLS");
                 menu.citireRestaurant(cin);
                 break;
 
             case 2:
-                system("clear");
+                system("CLS");
                 menu.afisareRestaurant(cout);
                 break;
             
             case 3:
-                system("clear");
+                system("CLS");
                 menu.afisareMeniu();
                 //cin.get();
                 break;
@@ -63,7 +63,7 @@ int main()
                 menu.afiseazaNumarClientiRestaurant();
                 break;
             default:
-                system("clear");
+                system("CLS");
                 cout << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&\n";
                 cout << "& Multumesc ca ai folosit aplicatia mea &\n";
                 cout << "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&\n";
@@ -80,9 +80,9 @@ int main()
 
 
     
-//     ifstream f("input.in");
-//     Meniu meniu;
-//     f>>meniu;
+    // ifstream f("input.in");
+    // Meniu meniu;
+    // f>>meniu;
 //     cout << meniu;
 //     Restaurant r;
 //     cin >>r;
@@ -97,7 +97,7 @@ int main()
     // vector<Client> clienti;
 
     // Client c;
-    // Client c1;
+    // // Client c1;
     // c.setMeniu(meniu);
     // cin >> c;
     // cout << c;
@@ -277,11 +277,11 @@ int main()
     // }
     // vector<Supa*> s1;
     // s1 = s;
-    // s.clear();
+    // s.CLS();
     // for (int i = 0; i<n; i++){
     //     cout <<*s1[i];
     // }
-    // s1.clear();
+    // s1.CLS();
     // cout <<s1.size();
 
     // Ciorba s;

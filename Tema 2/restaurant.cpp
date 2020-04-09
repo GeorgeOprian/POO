@@ -66,6 +66,7 @@ void Restaurant::setMeniu(Meniu m){
 }
 void Restaurant::aseazaLaMasa(int nrMasa, int nrClienti){
     vector <Client> grup(nrClienti);
+    cout << "dimensiunea grupui: " << grup.size()<<endl;
     mese[nrMasa].setMeniu(meniu);
     mese[nrMasa].setClienti(grup);
 }
