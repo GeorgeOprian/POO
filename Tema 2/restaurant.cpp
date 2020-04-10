@@ -98,7 +98,7 @@ void Restaurant::interactiune(int nrMasa){
     switch (optiune)
     {
         case 1:
-            system("clear");
+            system("CLS");
             citesteMasa(nrMasa);
             break;
         case 2:

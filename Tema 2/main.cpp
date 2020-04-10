@@ -5,15 +5,15 @@ using namespace std;
 
 int main()
 {
-    system("clear");
+    system("CLS");
     Interfata menu;
     bool exit = 0;
     while (true)
     {
-        system("clear");
+        system("CLS");
         menu.afiseaza_optiuni();
         menu.citeste_optiunea();
-        system("clear");
+        system("CLS");
         switch (menu.get_optiune())
         {
             case 1:

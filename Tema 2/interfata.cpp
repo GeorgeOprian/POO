@@ -37,7 +37,7 @@ void Interfata::citeste_optiunea(){
     cout <<"Introduceti optiunea dorinta: ";
     cin >> optiune;
     cin.get();
-    system("clear");
+    system("CLS");
 }
 
 void Interfata::afisareMeniu(){
