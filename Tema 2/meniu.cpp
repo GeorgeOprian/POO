@@ -100,8 +100,8 @@ Meniu::Meniu(const Meniu& m){
     
 }
 Meniu::~Meniu(){
-    /*for(unsigned int i = 0; i < supe.size(); i++)
-	delete supe[i];
+    for(unsigned int i = 0; i < supe.size(); i++)
+	    delete supe[i];
     for(unsigned int i = 0; i < ciorbe.size(); i++)
         delete ciorbe[i];
     for(unsigned int i = 0; i < produsePui.size(); i++)
@@ -119,11 +119,22 @@ Meniu::~Meniu(){
     for(unsigned int i = 0; i < bere.size(); i++)
         delete bere[i];
     for(unsigned int i = 0; i < apa.size(); i++)
-        delete apa[i];*/
+        delete apa[i];
+    nrSupe = 0;
+    nrCiorbe = 0;
+    nrPui = 0;
+    nrVita = 0;
+    nrGarnituri = 0;
+    nrDeserturi = 0;
+    nrVinPahar = 0;
+    nrVinSticla = 0;
+    nrBere = 0;
+    nrApa = 0;
 
 }
+
 Meniu& Meniu::operator=(const Meniu& m){
-    if (this!=&m){
+    if (this != &m){
         for(unsigned int i = 0; i < supe.size(); i++)
             delete supe[i];
         for(unsigned int i = 0 ;i < m.supe.size(); i++){

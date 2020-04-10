@@ -9,7 +9,6 @@ class Interfata
         int optiune;
     public:
         Interfata(); 
-        Interfata(Restaurant); 
         Interfata(const Interfata&);
         ~Interfata() = default;
 

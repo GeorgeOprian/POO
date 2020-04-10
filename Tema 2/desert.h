@@ -12,7 +12,7 @@ class Desert:public Produs
         Desert() = default;
         Desert(string, int, int, string, int, int);
         Desert(const Desert&);
-        ~Desert(){};
+        ~Desert() = default;
         Desert& operator=(const Desert&);
         void citire(ifstream&);
         void afisare(ostream&);

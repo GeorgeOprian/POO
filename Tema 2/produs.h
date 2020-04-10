@@ -16,7 +16,7 @@ class Produs
         Produs() = default;
         Produs(string, int, int, string);
         Produs(const Produs&);
-        virtual ~Produs(){};
+        virtual ~Produs() = default;
 
         virtual Produs& operator=(const Produs&);
         friend ifstream& operator>>(ifstream&, Produs&);

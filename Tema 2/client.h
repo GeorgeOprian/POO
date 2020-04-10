@@ -10,7 +10,6 @@ using namespace std;
 class Client
 {
     protected:
-
         Meniu meniu;
         Comanda comanda;
         int nrProduse;
@@ -23,7 +22,7 @@ class Client
         Client(const Meniu&);
         Client(const Meniu&, int, int);
         Client (const Client&);
-        ~Client() = default;
+        ~Client(){};
 
         Client& operator=(const Client&);
         void preiaComanda(istream&);
@@ -32,7 +31,7 @@ class Client
         void afiseazaComanda(ostream&);
         friend ostream& operator<<(ostream&, Client&);
 
-        void setMeniu(Meniu);
+        void setMeniu(const Meniu&);
         int getTotalConsumat();
         void afisaremeniucomanda(){cout << comanda.meniu;};
 

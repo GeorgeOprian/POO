@@ -12,7 +12,7 @@ class Supa: public Produs
         Supa() = default;
         Supa(string, int, int, string);
         Supa(const Supa&);
-        ~Supa(){};
+        ~Supa()= default;
         Supa& operator=(const Supa&);
         void afisare(ostream&);
 };
@@ -25,7 +25,7 @@ class Ciorba: public Produs
         Ciorba() = default;
         Ciorba(string, int, int, string, bool, bool);
         Ciorba(const Ciorba&);
-        ~Ciorba(){};
+        ~Ciorba()= default;
         Ciorba& operator=(const Ciorba&);
         void citire(ifstream&);
         void afisare(ostream&);
@@ -41,7 +41,7 @@ class Pui: public Produs
         Pui() = default;
         Pui(string, int, int, string);
         Pui(const Pui&);
-        ~Pui(){};
+        ~Pui()= default;
         void afisare(ostream&);
 };
 
@@ -53,7 +53,7 @@ class Vita: public Produs
         Vita() = default;
         Vita(string, int, int, string, string);
         Vita(const Vita&);
-        ~Vita(){};
+        ~Vita() = default;
         Vita& operator=(const Vita&);
         //void citire(ifstream&);
         void afisare(ostream&);

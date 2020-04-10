@@ -3,7 +3,6 @@
 
 #include "produs.h"
  
- //cantitatea o setezi din citirea cu clientul
  class Vin: public Produs
  {
     protected:
@@ -12,7 +11,7 @@
         Vin() = default;
         Vin(string, int, int, string, string);
         Vin(const Vin&);
-        virtual ~Vin(){};
+        virtual ~Vin()= default;
         Vin& operator=(const Vin&);
 
         virtual void citire(ifstream&);
@@ -34,7 +33,7 @@
         VinSticla() = default;
         VinSticla(string, int, int, string, string, string, int);
         VinSticla(const VinSticla&);
-        ~VinSticla(){};
+        ~VinSticla()= default;
 
         VinSticla& operator=(const VinSticla&);
 
@@ -55,7 +54,7 @@ class Bere:public Produs
         Bere() = default;
         Bere(string, int, int, string, string);
         Bere(const Bere&);
-        ~Bere(){};
+        ~Bere()= default;
 
         Bere& operator=(const Bere&);
 
@@ -78,7 +77,7 @@ class Apa:public Produs
         Apa() = default;
         Apa(string, int, int, string, string, string);
         Apa(const Apa&);
-        ~Apa(){};
+        ~Apa()= default;
 
         Apa& operator=(const Apa&);
 

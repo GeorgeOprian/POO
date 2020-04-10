@@ -23,6 +23,12 @@ Comanda::Comanda(const Comanda& c){
     for(unsigned int i = 0; i < c.listaProduse.size(); i++)
         listaProduse.push_back(new Produs(*(c.listaProduse[i])));
 }
+Comanda::~Comanda(){
+    for (unsigned int i = 0; i < listaProduse.size(); i++){
+        delete listaProduse[i];
+    }
+    nrProduse = 0;
+}
 Comanda& Comanda::operator=(const Comanda& c){
     if (this != &c){
         this->meniu = meniu;
@@ -36,9 +42,7 @@ Comanda& Comanda::operator=(const Comanda& c){
     return *this;
 }
 void Comanda::citire(istream& in){
-    cout << "meniul in comanda:" << meniu << " *\n";
     string optiune;
-    //in.get();
     cout << "\nDoriti supa sau ciorba?\n";
     getline(in, optiune);
     if (optiune == "Da" || optiune == "da"){
@@ -345,7 +349,6 @@ istream& operator>>(istream& in, Comanda& c){
     return in;
 }
 void Comanda::afisare(ostream& out){
-    cout << "Ati comandat:\n";
     for (int i = 0; i< nrProduse; i++){
         out << *listaProduse[i];
     }
@@ -357,19 +360,12 @@ ostream& operator<<(ostream& out, Comanda& c){
 void Comanda::calculeazaNota(){
     total = 0;
     for (int i = 0; i < nrProduse; i++){
-        //cout << *listaProduse[i];
-        //cout << "****" << listaProduse[i]->getPret() << "***\n";
         total += listaProduse[i]->getPret();
-        //cout << "****" << total<< "***\n";
-        //cout << listaProduse[i]->getPret()<<"\n";
     }
-    //cout << total;
 }
-
 int Comanda::getTotal(){
     return total;
 }
-void Comanda::setMeniu(Meniu meniu){
-    cout << "intra in seterul de meniu din comanda\n";
-    this->meniu = meniu;
+void Comanda::setMeniu(const Meniu& m){
+    this->meniu = m;
 }

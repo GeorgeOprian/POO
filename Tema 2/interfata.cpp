@@ -10,15 +10,6 @@ Interfata::Interfata(){
     f>>meniu;
     restaurant.setMeniu(meniu);
 }
-Interfata::Interfata(Restaurant r){
-    this->restaurant = r;
-    optiune = 0;
-    restaurantCitit = 0;
-    ifstream f("input.in");
-    Meniu meniu;
-    f>>meniu;
-    restaurant.setMeniu(meniu);
-}
 Interfata::Interfata(const Interfata& i){
     this->restaurant = i.restaurant;
     this->restaurantCitit = i.restaurantCitit;
@@ -36,8 +27,8 @@ void Interfata::afiseaza_optiuni(){
     cout << "1. Citeste restaurantul;\n";
     cout << "2. Afisare informatii mese;\n";
     cout << "3. Afisare meniu;\n";
-    cout << "4. Interactioneaza cu o masa;\n";
-    cout << "5. Adauga clienti in restaurant;\n";
+    cout << "4. Adauga clienti in restaurant;\n";
+    cout << "5. Interactioneaza cu o masa;\n";
     cout << "6. Afiseaza numarul de clienti din restaurant;\n";
     cout << "Orice input >= 7 ==> Iesire.\n";
     cout << "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
@@ -87,11 +78,13 @@ void Interfata::interactiune(){
             int nrMasa;
             cout << "Introduceti numarul mesei: ";
             cin >> nrMasa;
-            restaurant.citesteMasa(nrMasa - 1);
+            if (nrMasa > restaurant.getNrMese()) cout << "Nu exista masa " << nrMasa << " in restaurant\n";
+            else{
+                restaurant.interactiune(nrMasa - 1);
+            }
         }else{
             cout << "Nu sunt clienit la mese.\n";
         }
-        //cin >> 
     }
 }
 void Interfata::sosescClienti(){

@@ -27,7 +27,8 @@ class Restaurant
         friend ostream& operator<<(ostream&, Restaurant&);
 
         void afisareMeniu();
-        void setMeniu(Meniu);
+        void setMeniu(const Meniu&);
+        Meniu getMeniu();
         bool cautaMasa(int);
         void aseazaLaMasa(int, int);
         void citesteMasa(int);
@@ -36,6 +37,7 @@ class Restaurant
         int getNrClientiMasa(int);
         int getNrClienti();
         void setNrClienti(int);
+        void interactiune(int);
 
 };
 

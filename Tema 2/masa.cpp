@@ -6,11 +6,13 @@ Masa::Masa(){
     nrClienti = 0;
     nrLocuri = 0;
     totalMasa = 0;
+    comandaPreluata = 0;
 }
 Masa::Masa(const Meniu&, unsigned int nrLocuri){
     this->meniu = meniu;
     this->nrLocuri = nrLocuri;
     nrClienti = 0;
+    comandaPreluata = 0;
 }
 Masa::Masa(const Meniu& meniu, unsigned int nrLocuri, vector<Client> clienti){
     this->meniu = meniu;
@@ -26,6 +28,7 @@ Masa::Masa(const Meniu& meniu, unsigned int nrLocuri, vector<Client> clienti){
     }else{
         cout << "Masa nu are suficiente locuri\n";
     }
+    comandaPreluata = 0;
 }
 Masa::Masa(const Masa& m){
     this->meniu = m.meniu;
@@ -46,11 +49,21 @@ Masa& Masa::operator=(const Masa& m){
 }
 
 void Masa::preiaComanda(istream& in){
-    cout << "Meniul in masa:\n" << meniu;
-    for (unsigned int i = 0; i < nrClienti; i++){
-        cout << "Clientul " << i + 1 << ":\n";
-        in >> clienti[i];
-        cout <<endl;
+    if (comandaPreluata) cout << "Comanda a fost deja preluata\n";
+    else{
+        cout << "Preia comanda la masa:\n";
+        //cout << meniu;
+        // for (int i =0; i <  nrClienti; i++){
+        //     cout << "cleintul " << i<<endl;
+        //     cout << clienti[i];
+        // }
+        in.get();
+        for (unsigned int i = 0; i < nrClienti; i++){
+            cout << "Clientul " << i + 1 << ":\n";
+            in >> clienti[i];
+            //cout <<endl;
+        }
+        comandaPreluata = 1;
     }
 }
 istream& operator>>(istream& in, Masa& m){
@@ -61,15 +74,19 @@ void Masa::cheamaChelnerul(istream& in, ostream& out){
     cout << "Introduceti numarul clientului care cheama chelnerul: ";
     int nrClient;
     in >> nrClient;
+    in.get();
     nrClient--;
-    //in.get();
     bool preferinta = clienti[nrClient].cheamaChelnerul(in, out);
-    if(preferinta){
-        if (preferinta == 1){
-            clienti.erase(clienti.begin() + nrClient);
-        }else{
-            afiseazaNota(out);
-        }
+    if (preferinta == 1){ // a vrut nota seaparat
+        clienti.erase(clienti.begin() + nrClient);
+        nrClienti--;
+    }else{ //nota colectiva
+        cout << "\nNota la masa este: \n";
+        afiseazaNota(out);
+
+        cout << "a sters clientii\n";
+        nrClienti = 0;
+        comandaPreluata = 0;
     }
 }
 void Masa::afiseazaNota(ostream& out){
@@ -86,21 +103,16 @@ ostream& operator<<(ostream& out, Masa& m){
     m.afiseazaNota(out);
     return out;
 }
-void Masa::setMeniu(Meniu meniu){
+void Masa::setMeniu(const Meniu& meniu){
     this->meniu = meniu;
 }
 void Masa::setClienti(vector<Client> clienti){
     if (clienti.size() <= nrLocuri){
         this->nrClienti = clienti.size();
-        cout << "in clieni";
-        for(unsigned int i = 0; i < nrClienti; i++){
-            cout << i << " ";
-            this->clienti.push_back(clienti[i]);
-            //cout << this->clienti[i];
+        for(unsigned int i = 0; i < this->nrClienti; i++){
+            this->clienti.push_back(Client (clienti[i]));//apelez cc 
             this->clienti[i].setMeniu(meniu);
-            cout << this->clienti[i];
         }
-        cout <<endl;
     }else{
         cout << "Masa nu are suficiente locuri\n";
     }
@@ -117,3 +129,6 @@ int Masa::getNrLocuri(){
 int Masa::getNrClienti(){
     return nrClienti;
 }
+
+
+

@@ -42,8 +42,7 @@ Client& Client::operator=(const Client& c){
 }
 
 void Client::preiaComanda(istream& in){
-    cout << "in client preia comanda\n";
-    cout << "meniul in client:\n" << meniu;
+    comanda.setMeniu(this->meniu);
     in >> comanda;
 }
 
@@ -63,10 +62,7 @@ int Client::cheamaChelnerul(istream& in, ostream& out){
             int total = comanda.getTotal();
             totalConsumat = total;
             out << "\nTotal: " << totalConsumat << " lei\n";
-            return -1; //vrea nota individual
-        }else{
-            
-            return 1; //vrea nota la masa
+            return 1; //vrea nota individual
         }
     }
     return 0;
@@ -77,8 +73,7 @@ istream& operator>>(istream& in, Client& c){
     return in;
 }
 void Client::afiseazaComanda(ostream& out){
-    out << "sunt client\n";
-    out << comanda.meniu;
+    out << comanda;
     comanda.calculeazaNota();
     totalConsumat = comanda.getTotal();
 }
@@ -91,7 +86,6 @@ int Client::getTotalConsumat(){
     return totalConsumat;
 }
 
-void Client::setMeniu(Meniu meniu){
+void Client::setMeniu(const Meniu& meniu){
     this->meniu = meniu;
-    comanda.setMeniu(meniu);
 }

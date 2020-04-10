@@ -13,6 +13,7 @@ class Masa
         unsigned int nrClienti;
         unsigned int nrLocuri;
         int totalMasa;
+        bool comandaPreluata;
     public:
         Masa();
         Masa(const Meniu&, unsigned int);
@@ -30,7 +31,7 @@ class Masa
         void setNrLocuri(int);
         void setClienti(vector <Client>);
         vector<Client> getclienti();
-        void setMeniu(Meniu);
+        void setMeniu(const Meniu&);
 
         int getNrLocuri();
         int getNrClienti();

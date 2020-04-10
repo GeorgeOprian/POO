@@ -15,7 +15,7 @@ class Comanda
         Comanda(Meniu);
         Comanda(Meniu, int, int);
         Comanda(const Comanda&);
-        virtual ~Comanda() = default;
+        ~Comanda();
 
         Comanda& operator=(const Comanda&);
         
@@ -25,7 +25,7 @@ class Comanda
         friend istream& operator>>(istream&, Comanda&);
         friend ostream& operator<<(ostream&, Comanda&);
 
-        void setMeniu(Meniu);
+        void setMeniu(const Meniu&);
 
         void calculeazaNota();
         int getTotal();
