@@ -44,8 +44,8 @@ class Masina
             cout << "Firma noasta a gestionat " << nrMasiniGestionate << endl;
         }
         int getAn() const;
-        bool operator<(const Masina& m){
-            return an < m.an;
+        bool operator>=(const Masina& m){
+            return an >= m.an;
         }
         bool getNou();
         bool operator==(const Masina&);
@@ -215,11 +215,6 @@ ostream& operator<<(ostream& out, Masina& m){
 
 int Masina::getAn() const{
     return an;
-}
-bool operator> (const Masina& m1, const Masina& m2){
-    if (m1.getAn() > m2.getAn())
-        return 1;
-    return 0;
 }
 
 bool Masina::getNou(){
@@ -640,16 +635,17 @@ void afisareMeniu(){
     cout << "\nOptiuni:\n";
     cout << "\n###############################################\n";
     cout << "\n1. Introduceti automobile in parcul auto;";
-    cout << "\n2. Afisati numarul de automobile din parcul auto;";
-    cout << "\n3. Afisati automobilele gestionate de la inceputul companiei;"; 
-    cout << "\n4. Afisati automobilele de oras in stoc;";
-    cout << "\n5. Afisati automobilele de oras vandute;"; 
-    cout << "\n6. Afisati compactele in stoc;";
-    cout << "\n7. Afisati compactele vandute;";
-    cout << "\n8. Afisati monovolumele in stoc;";
-    cout << "\n9. Afisati monovolumele vandute;";
-    cout << "\n10. Cumparati o masina;"; 
-    cout << "\n\nOrice numar mai mare decat 10 pentru a iesi.\n";
+    cout << "\n2. Numarul de masini folosind static";
+    cout << "\n3. Numarul de automobile in stoc si vandute;";
+    cout << "\n4. Afisati automobilele distincte gestionate de la inceputul companiei;"; 
+    cout << "\n5. Afisati automobilele de oras in stoc;";
+    cout << "\n6. Afisati automobilele de oras vandute;"; 
+    cout << "\n7. Afisati compactele in stoc;";
+    cout << "\n8. Afisati compactele vandute;";
+    cout << "\n9. Afisati monovolumele in stoc;";
+    cout << "\n10. Afisati monovolumele vandute;";
+    cout << "\n11. Cumparati o masina;"; 
+    cout << "\n\nOrice numar mai mare decat 11 pentru a iesi.\n";
 }
 
 void tip(Masina *&p, int &i){
@@ -693,7 +689,7 @@ void tip(Masina *&p, int &i){
 */
 struct compara {
     bool operator() (pair<Masina*, bool>p1, pair<Masina*, bool> p2) const {
-        return (*(p1.first) > *(p2.first));
+        return (*(p1.first) >= *(p2.first));
     }
 };
 void introducetiAutomobile (set<pair<Masina*, bool>, compara> &masiniGestionate, Vanzare<Masina>& masiniDeOras, Vanzare<Compacta>& compacte,
@@ -701,33 +697,45 @@ void introducetiAutomobile (set<pair<Masina*, bool>, compara> &masiniGestionate,
     int n;
     cout << "Introduceti numarul de masini pe care vrei sa le adaugati in parcul auto: ";
     cin >> n;
+    cin.get();
     for (int i = 0; i < n;){
         Masina *p;
-        cin.get();
+        int copieI = i;
+        
         tip (p, i);
-        Compacta *p1 = dynamic_cast<Compacta*>(p);
-        if (p1){
-            cout << "intra in comp\n";
-            compacte.adaugaInStoc(*p1);
-            masiniGestionate.insert(pair<Masina*, bool>(new Compacta(*p1), p->getNou()));
-        }else{
-            Monovolume *p2 = dynamic_cast<Monovolume*>(p);
-            if (p2){
-                cout << "intra in mono\n";
-                monovolume.adaugaInStoc(*p2);
-                masiniGestionate.insert(pair<Masina*, bool>(new Monovolume(*p2), p->getNou()));
+        if (i !=copieI){
+            Compacta *p1 = dynamic_cast<Compacta*>(p);
+            if (p1){
+                compacte.adaugaInStoc(*p1);
+                masiniGestionate.insert(pair<Masina*, bool>(new Compacta(*p1), p->getNou()));
             }else{
-                Masina *p3 = dynamic_cast<Masina*>(p);
-                if(p3){
-                    cout << "intra in masina\n";
-                    masiniDeOras.adaugaInStoc(*p3);
-                    masiniGestionate.insert(pair<Masina*, bool>(new Masina(*p3), p->getNou()));
+                Monovolume *p2 = dynamic_cast<Monovolume*>(p);
+                if (p2){
+                    monovolume.adaugaInStoc(*p2);
+                    masiniGestionate.insert(pair<Masina*, bool>(new Monovolume(*p2), p->getNou()));
+                }else{
+                    Masina *p3 = dynamic_cast<Masina*>(p);
+                    if(p3){
+                        masiniDeOras.adaugaInStoc(*p3);
+                        masiniGestionate.insert(pair<Masina*, bool>(new Masina(*p3), p->getNou()));
+                    }
                 }
             }
+            cin.get();
+        }else {
+            //cin.get();
         }
 
     }
 }
+void afisareStocVandute(Vanzare<Masina> masiniDeOras, Vanzare<Compacta> masiniCompacte, Vanzare<Monovolume> monovolume){
+    cout << "Numarul masinilor in stoc este: ";
+    cout << masiniDeOras.getNrMasiniStoc() + masiniCompacte.getNrMasiniStoc() + monovolume.getNrMasiniStoc() <<endl;
+    cout << "Numarul masinilor vandute este: ";
+    cout << masiniDeOras.getNrMasiniVandute() + masiniCompacte.getNrMasiniVandute() + monovolume.getNrMasiniVandute() <<endl;
+    
+}
+
 
 
 void afizeazaAtutomobileleGestionate(set<pair<Masina*, bool>, compara> &masiniGestionate){
@@ -843,27 +851,30 @@ int main(){
             Masina::nrMasini();
             break;
         case 3:
-            afizeazaAtutomobileleGestionate(masiniGestionate);
+            afisareStocVandute(masiniDeOras, masiniCompacte, monovolume);
             break;
         case 4:
-            masiniDeOras.afisareMasiniInStoc(cout);
+            afizeazaAtutomobileleGestionate(masiniGestionate);
             break;
         case 5:
-            masiniDeOras.afisareMasiniVandute(cout);
+            masiniDeOras.afisareMasiniInStoc(cout);
             break;
         case 6:
-            masiniCompacte.afisareMasiniInStoc(cout);
+            masiniDeOras.afisareMasiniVandute(cout);
             break;
         case 7:
-            masiniCompacte.afisareMasiniVandute(cout);
+            masiniCompacte.afisareMasiniInStoc(cout);
             break;
         case 8:
-            monovolume.afisareMasiniInStoc(cout);
+            masiniCompacte.afisareMasiniVandute(cout);
             break;
         case 9:
-            monovolume.afisareMasiniVandute(cout);
+            monovolume.afisareMasiniInStoc(cout);
             break;
         case 10:
+            monovolume.afisareMasiniVandute(cout);
+            break;
+        case 11:
             Cumparare(masiniGestionate, masiniDeOras, masiniCompacte, monovolume);
             break;
         default:
